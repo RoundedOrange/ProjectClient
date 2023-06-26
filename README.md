@@ -19,6 +19,14 @@
 |anaconda|23.5.0|
 |mysql|8.0.33|
 
+## 其他
+
+以下软件已经在项目中内置，无需再下载
+
+|软件名|版本号|
+|:-:|:-:|
+|bootstrap|5.3.0-alpha1|
+
 ## 环境配置
 
 使用anaconda创建虚拟环境
@@ -56,7 +64,7 @@ pip install -r requirements.txt
 在MySQL中创建新数据库
 
 ```SQL
-CREATE DATABASE FederatedLearning DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+CREATE DATABASE FederatedLearning DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 
