@@ -9,6 +9,8 @@
 |符号|意义|
 |:-:|:-:|
 |[root_dir]|项目所在根目录|
+|[local_ip]|本地计算机ip地址|
+|[dababase_ip]|数据库所在服务器ip地址|
 
 ## 提前下载
 
@@ -18,14 +20,6 @@
 |:-:|:-:|
 |anaconda|23.5.0|
 |mysql|8.0.33|
-
-## 其他
-
-以下软件已经在项目中内置，无需再下载
-
-|软件名|版本号|
-|:-:|:-:|
-|bootstrap|5.3.0-alpha1|
 
 ## 环境配置
 
@@ -67,9 +61,6 @@ pip install -r requirements.txt
 CREATE DATABASE FederatedLearning DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-
-### 修改数据库设置
-
 修改```[root_dir]/Client/Client/settings.py```中```DATABASES```字段的数据
 
 ```python
@@ -77,15 +68,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',#不用修改
         'NAME': 'FederatedLearning',#数据库名字
-        'USER': 'root',#用户名
+        'USER': 'client',#用户名
         'PASSWORD': 'password',#密码
         'HOST': 'localhost',#云端数据库地址
         'POST': '3306'#端口
     }
 }
 ```
-
-## 数据迁移
 
 进入[root_dir]/Client目录
 
@@ -97,6 +86,23 @@ cd [root_dir]/Client
 
 ```
 python manage.py migrate
+```
+
+### 云端数据库设置
+
+修改```[root_dir]/Client/Client/settings.py```中```DATABASES```字段的数据，本项目目前已经预设好服务器ip连接，无需再修改。
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',#不用修改
+        'NAME': 'FederatedLearning',#数据库名字
+        'USER': 'client',#用户名
+        'PASSWORD': 'password',#密码
+        'HOST': '[database_ip]',#云端数据库地址
+        'POST': '3306'#端口
+    }
+}
 ```
 
 ## 运行

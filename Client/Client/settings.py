@@ -78,9 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'FederatedLearning',
-        'USER': 'root',
+        'USER': 'client',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': '114.115.170.72',
         'POST': '3306'
     }
 }
