@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Dashboard',
     'Login',
     'Data',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join('Client/Data/static')
 MEDIA_URL = '/avatar/'
+CAPTCHA_FIELD_TEMPLATE = os.path.join(BASE_DIR,"Login/templates/captcha/field_template.html")
+CAPTCHA_TEXT_FIELD_TEMPLATE = os.path.join(BASE_DIR,"Login/templates/captcha/text_field.html")
