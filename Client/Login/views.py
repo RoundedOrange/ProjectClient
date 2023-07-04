@@ -25,9 +25,9 @@ def login(request):
                 message = '用户不存在！'
                 return render(request,'login.html',locals())
             if user.password == hash_code(password):
-                #request.session['is_login'] = True
-                #request.session['nickname'] = user.nickname
-                #request.session['user_id'] = user.user_id
+                request.session['is_login'] = True
+                request.session['nickname'] = user.nickname
+                request.session['user_id'] = user.user_id
                 return redirect('/dashboard/')
             else:
                 message = '密码不正确！'

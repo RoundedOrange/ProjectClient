@@ -54,7 +54,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>账号信息总览</span></a>
+                    <span>个人信息总览</span></a>
             </li>
             
             <li class="nav-item">
@@ -74,19 +74,26 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                拥有资源
+                资产相关
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>拥有资源概览</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>拥有资源管理</span></a>
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#zichan_pages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>资产管理</span>
+                </a>
+                <div id="zichan_pages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">4</h6>
+                        <a class="collapse-item" href="">1</a>
+                        <a class="collapse-item" href="">2</a>
+                        <a class="collapse-item" href="">3</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">5</h6>
+                        <a class="collapse-item" href="">6</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -94,7 +101,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                权限管理（仅管理员可见）
+                用户权限（仅管理员可见）
             </div>
 
             <li class="nav-item">
@@ -113,20 +120,20 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapsePages"
+                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#renwu_pages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>任务管理</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="renwu_pages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">现在任务</h6>
-                        <a class="collapse-item" href="">发布任务</a>
-                        <a class="collapse-item" href="">任务进度</a>
-                        <a class="collapse-item" href="">任务队列</a>
+                        <h6 class="collapse-header">1</h6>
+                        <a class="collapse-item" href="">2</a>
+                        <a class="collapse-item" href="">3</a>
+                        <a class="collapse-item" href="">4</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">历史任务</h6>
-                        <a class="collapse-item" href="">查看历史任务</a>
+                        <h6 class="collapse-header">5</h6>
+                        <a class="collapse-item" href="">6</a>
                     </div>
                 </div>
             </li>
@@ -147,6 +154,18 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+            <div class="sidebar-heading">
+                可信环境管理
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>区块链感知监控</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -159,6 +178,11 @@
                     <span>充值</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>个人账单明细</span></a>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -348,19 +372,6 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    信息
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    设置
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    日志
-                                </a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
@@ -379,8 +390,6 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">总览</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i>生成报告</a>
                     </div>
 
                     <!-- Content Row -->
@@ -393,8 +402,9 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                会员卡余额</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">600元</div>
+                                                账户余额</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">￥ 50,000.02</div>
+                                            <div class="p mb-0  text-gray-800">自从上周以来 <i class="fas fa-calendar fa-x text-gray-300"></i> 20.5%</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -411,7 +421,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                拥有资源数量</div>
+                                                客户端余量</div>
+                                                <br>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">12台</div>
                                         </div>
                                         <div class="col-auto">
@@ -428,7 +439,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">任务进度
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">总任务进度
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -458,8 +469,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                准确率</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">99%</div>
+                                                总发起任务</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">135个</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -480,7 +491,8 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">准确率时间图</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">统计数据</h6>
+                                    <p class="m-0 text-primary">2021-09-01</p>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -552,121 +564,96 @@
                     <div class="row">
 
                         <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-lg-4 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">任务进度</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">最近任务时长</h6>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="small font-weight-bold">任务1 <span
-                                            class="float-right">20%</span></h4>
+                                            class="float-right">250s</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">任务2 <span
-                                            class="float-right">40%</span></h4>
+                                            class="float-right">200s</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"
                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">任务3 <span
-                                            class="float-right">60%</span></h4>
+                                            class="float-right">150s</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar" role="progressbar" style="width: 60%"
                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">任务4 <span
-                                            class="float-right">80%</span></h4>
+                                            class="float-right">100s</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 40%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">任务5 <span
-                                            class="float-right">已完成！</span></h4>
+                                            class="float-right">50s</span></h4>
                                     <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 20%"
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Color System -->
-                            <div class="row">
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-primary text-white shadow">
-                                        <div class="card-body">
-                                            失败率
-                                            <div class="text-white-50 small">100%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-success text-white shadow">
-                                        <div class="card-body">
-                                            也是失败率，但是是绿色的
-                                            <div class="text-white-50 small">100%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-info text-white shadow">
-                                        <div class="card-body">
-                                            也是失败率，但是是青色的
-                                            <div class="text-white-50 small">100%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-warning text-white shadow">
-                                        <div class="card-body">
-                                            还是失败率，是黄色的
-                                            <div class="text-white-50 small">100%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mb-4">
-                                    <div class="card bg-danger text-white shadow">
-                                        <div class="card-body">
-                                            不知道填什么了
-                                            <div class="text-white-50 small">114514</div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
 
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- Illustrations -->
+                        <div class="col-lg-4 mb-4">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">一些图</h6>
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">近几次任务准确率</h6>
                                 </div>
+                                <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="../static/img/undraw_posting_photo.svg" alt="...">
+                                    
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> 台式机
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> 笔记本
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> 手机
+                                        </span>
                                     </div>
-                                    <p>不知道说什么</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">点击充值100元！&rarr;</a>
                                 </div>
                             </div>
-
-                            <!-- Approach -->
+                        </div>
+                        <div class="col-lg-4 mb-4">
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">114514</h6>
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">近几次任务日志</h6>
                                 </div>
+                                <!-- Card Body -->
                                 <div class="card-body">
-                                    <p>1919810</p>
-                                    <p class="mb-0">homo特有的意味不明（雾）</p>
+                                    
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> 台式机
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> 笔记本
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> 手机
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
@@ -731,9 +718,8 @@
     <script src="../static/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../static/js/demo/chart-area-demo.js"></script>
-    <script src="../static/js/demo/chart-pie-demo.js"></script>
-
+    <script src="../static/js/chart-pie-demo.js"></script>
+    <script src="../static/js/chart-area-demo.js"></script>
 </body>
 
 </html>
