@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from Login import forms
+from Data import models
 import hashlib
 def hash_code(s,salt='DataWrangler'):
     h=hashlib.sha256()
