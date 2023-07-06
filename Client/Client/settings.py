@@ -137,3 +137,7 @@ MEDIA_ROOT = os.path.join('Client/Data/static')
 MEDIA_URL = '/avatar/'
 CAPTCHA_FIELD_TEMPLATE = os.path.join(BASE_DIR,"Login/templates/captcha/field_template.html")
 CAPTCHA_TEXT_FIELD_TEMPLATE = os.path.join(BASE_DIR,"Login/templates/captcha/text_field.html")
+ALIYUN_ACCESS_KEY = 'LTAI5tEmxdbBaS839dKPx8jz'
+ALIYUN_ACCESS_SECRET = '1jzrOAQkOBJhg6NqaYLkpebo9EKvNe'
+ALIYUN_SMS_SIGN_NAME = '橘子'
+ALIYUN_SMS_TEMPLATE_CODE = 'SMS_461825575'
