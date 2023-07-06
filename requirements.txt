@@ -3,3 +3,4 @@ pymysql==1.1.0
 cryptography==41.0.1
 Pillow==9.5.0
 django-simple-captcha==0.5.18
+aliyun-python-sdk-core==2.13.36
