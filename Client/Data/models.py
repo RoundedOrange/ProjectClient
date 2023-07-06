@@ -2,13 +2,13 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    user_id = models.IntegerField(primary_key=True)
+    user_id = models.AutoField(primary_key=True)
     nickname = models.CharField(max_length=10,null=False,unique=True)
     real_name = models.CharField(max_length=10,null=False)
-    telephone = models.CharField(max_length=10)
+    telephone = models.CharField(max_length=11)
     birth_date = models.DateField(null=True)
     is_administrator = models.BooleanField(default=False)
-    register_time = models.DateField(null=False)
+    register_time = models.DateTimeField(auto_now_add=True)
     signature = models.TextField(max_length=100,default="")
     avatar = models.ImageField(null=False,upload_to='avatar/')
     password = models.CharField(max_length=256)
@@ -17,7 +17,7 @@ class User(models.Model):
     balance = models.IntegerField(default=0)
 
 class Dataset(models.Model):
-    dataset_id = models.IntegerField(primary_key=True)
+    dataset_id = models.AutoField(primary_key=True)
     size = models.IntegerField()
     description = models.TextField(max_length=100,default="")
 
@@ -29,7 +29,7 @@ class User_Dataset(models.Model):
     end_date = models.DateField(null=False)
 
 class Device(models.Model):
-    device_id = models.IntegerField(primary_key=True)
+    device_id = models.AutoField(primary_key=True)
     OS_CHOICES = (
         ('1','Windows'),
         ('2','Linux'),
@@ -55,7 +55,7 @@ class Device(models.Model):
     max_bandwidth = models.IntegerField()
 
 class Task(models.Model):
-    task_id = models.IntegerField(primary_key=True)
+    task_id = models.AutoField(primary_key=True)
     start_time = models.DateField(null=False)
     end_time = models.DateField(null=True)
     accuracy = models.DecimalField(max_digits=5,decimal_places=4,default=0)
