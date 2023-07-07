@@ -85,6 +85,9 @@ def possession_add(request):
     possession_add_form = forms.PossessionAddForm()
     return render(request,'possession_add.html',locals())
 def possession_delete(request):
+    array = request.POST.getlist('checkbox')
+    for id in array:
+        models.Device.objects.get(device_id=id).delete()
     message = "删除成功！"
     try:
         devices = models.Device.objects.filter()
