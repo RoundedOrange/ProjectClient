@@ -415,86 +415,32 @@
                                             <th>核心数</th>
                                             <th>最大带宽</th>
                                             <th>是否为服务器</th>
+                                            <th>GPU数</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>123</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>456</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>789</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>222</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        
+                                        {% for device in devices%}
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                  </div>
+                                                </td>
+                                                <td>{{ device.device_id }}</td>
+                                                <td>{{ device.OS }}</td>
+                                                <td>{{ device.CPU}}</td>
+                                                <td>{{ device.status}}</td>
+                                                <td>{{ device.RAM}}</td>
+                                                <td>{{ device.ROM}}</td>
+                                                <td>{{ device.IP}}</td>
+                                                <td>{{ device.can_run_cuda}}</td>
+                                                <td>{{ device.description}}</td>
+                                                <td>{{ device.core_num}}</td>
+                                                <td>{{ device.max_bandwidth}}</td>
+                                                <td>{{ device.GPU_num}}</td>
+                                                <td>{{ device.is_server}}</td>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>

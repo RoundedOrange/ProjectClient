@@ -41,6 +41,13 @@ def change_password(request):
     change_password_form = forms.ChangePasswordForm() 
     return render(request,'change_password.html',locals())
 def possession_show(request):
+    try:
+        devices = models.Device.objects.filter()
+        return render(request,'possission_show.html',locals())
+
+    except:
+        message = "失败！"
+        return render(request,'possession_show.html',locals())
     return render(request,'possession_show.html',locals())
 def possession_add(request):
     if request.method == 'POST':
@@ -58,6 +65,7 @@ def possession_add(request):
                 core_num = possession_add_form.cleaned_data.get('core_num')
                 max_bandwidth = possession_add_form.cleaned_data.get('max_bandwidth')
                 is_server = possession_add_form.cleaned_data.get('is_server')
+                GPU_num = possession_add_form.cleaned_data.get('GPU_num')
                 device.OS = OS
                 device.CPU = CPU
                 device.RAM = RAM
@@ -67,6 +75,7 @@ def possession_add(request):
                 device.core_num = core_num
                 device.max_bandwidth = max_bandwidth
                 device.is_server = is_server
+                device.GPU_num = GPU_num
                 device.save()
                 message = "添加成功！"
                 return render(request,'possession_add.html',locals())

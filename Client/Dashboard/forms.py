@@ -17,3 +17,4 @@ class PossessionAddForm(forms.Form):
     core_num = forms.IntegerField(label="核心数",widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入核心数'}))
     max_bandwidth = forms.IntegerField(label="最大带宽（单位：MB/s）",widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入最大带宽'}))
     is_server = forms.BooleanField(label="是否为服务器",required=False,widget=forms.CheckboxInput(attrs={'id':'is_server_checkbox'}))
+    GPU_num = forms.IntegerField(label="GPU数",widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入GPU数'}))
