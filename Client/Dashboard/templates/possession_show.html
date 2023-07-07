@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="author" content="DataWrangler">
 
-    <title>资产管理</title>
+    <title>拥有资产概览</title>
 
     <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -77,10 +77,20 @@
                 资产相关
             </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="possession_management">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>资产管理</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="" data-toggle="collapse" data-target="#collapsePossession" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>资产管理</span>
+                </a>
+                <div id="collapsePossession" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item active" href="possession_show">拥有资产概览</a>
+                        <a class="collapse-item active" href="">数据源管理</a>
+                        <a class="collapse-item active" href="">数据集管理</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -106,10 +116,20 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>任务管理</span></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseTask" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>任务管理</span>
+                </a>
+                <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item active" href="">任务发布</a>
+                        <a class="collapse-item active" href="">任务进度</a>
+                        <a class="collapse-item active" href="">任务结果</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

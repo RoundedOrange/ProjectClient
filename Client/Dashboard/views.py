@@ -39,5 +39,5 @@ def change_password(request):
                 return render(request,'change_password.html',locals())
     change_password_form = forms.ChangePasswordForm() 
     return render(request,'change_password.html',locals())
-def possession_management(request):
-    return render(request,'possession_management.html',locals())
+def possession_show(request):
+    return render(request,'possession_show.html',locals())
