@@ -6,3 +6,14 @@ class ChangePasswordForm(forms.Form):
     new_password = forms.CharField(label="新密码",max_length=256,widget=forms.PasswordInput(attrs={'class':'input-material','placeholder':'请输入新密码'}))
     repeat_password = forms.CharField(label="重复新密码",max_length=256,widget=forms.PasswordInput(attrs={'class':'input-material','placeholder':'请重新输入新密码'}))
     captcha = CaptchaField(label='验证码')
+
+class PossessionAddForm(forms.Form):
+    OS = forms.CharField(label="OS",max_length=256,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入操作系统','autofocus':''}))
+    CPU =  forms.CharField(label="CPU",max_length=256,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入CPU'}))
+    RAM = forms.CharField(label="RAM（单位：MB）",max_length=256,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入RAM'}))
+    ROM = forms.CharField(label="ROM（单位：MB）",max_length=256,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入ROM'}))
+    can_run_cuda = forms.BooleanField(label="是否能用CUDA",required=False,widget=forms.CheckboxInput(attrs={'id':'can_run_cuda_checkbox'}))
+    description = forms.CharField(label="描述",max_length=256,widget=forms.Textarea(attrs={'class':'input-material','placeholder':'请填写描述'}))
+    core_num = forms.IntegerField(label="核心数",widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入核心数'}))
+    max_bandwidth = forms.IntegerField(label="最大带宽（单位：MB/s）",widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入最大带宽'}))
+    is_server = forms.BooleanField(label="是否为服务器",required=False,widget=forms.CheckboxInput(attrs={'id':'is_server_checkbox'}))

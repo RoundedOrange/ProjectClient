@@ -6,14 +6,13 @@
     <meta charset="utf-8">
     <meta name="author" content="DataWrangler">
 
-    <title>拥有资产概览</title>
+    <title>个人信息总览</title>
 
     <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
+    
 
 </head>
 
@@ -382,125 +381,64 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex   mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">资产总览</h1>&emsp;
-                        <button type="button" class="btn btn-success" onclick="window.location.href='possession_add'">增加资产</button>&emsp;
-                        <button type="button" class="btn btn-primary">修改资产信息</button>&emsp;
-                        <button type="button" class="btn btn-danger">删除资产</button>
-                    </div>
-                    
-                    
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">资产列表</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                选择
-                                            </th>
-                                            <th>设备ID</th>
-                                            <th>OS</th>
-                                            <th>CPU</th>
-                                            <th>状态</th>
-                                            <th>RAM</th>
-                                            <th>ROM</th>
-                                            <th>IP</th>
-                                            <th>是否能用CUDA</th>
-                                            <th>描述</th>
-                                            <th>核心数</th>
-                                            <th>最大带宽</th>
-                                            <th>是否为服务器</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>123</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>456</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>789</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                              </div>
-                                            </td>
-                                            <td>222</td>
-                                            <td>Linux</td>
-                                            <td>i9-13900</td>
-                                            <td>运行中</td>
-                                            <td>12G</td>
-                                            <td>256G</td>
-                                            <td>127.0.0.1</td>
-                                            <td>是</td>
-                                            <td>填写用户描述</td>
-                                            <td>16</td>
-                                            <td>5MB/s</td>
-                                            <td>否</td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">添加资产</h1>
                     </div>
 
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="alert alert-primary">请填写资产详情</div>
+                            <div class="form d-flex align-items-center">
+                                <div class="content">
+                                    <form method="post" action="possession_add" class="form-validate" id="loginFrom">
+                                    {% if message %}
+                                        <div class="alert alert-warning">{{ message }}</div>
+                                    {% endif %}
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        {{ possession_add_form.OS.label_tag }}
+                                        {{ possession_add_form.OS }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.CPU.label_tag }}
+                                        {{ possession_add_form.CPU }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.RAM.label_tag }}
+                                        {{ possession_add_form.RAM }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.ROM.label_tag }}
+                                        {{ possession_add_form.ROM }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.can_run_cuda.label_tag }}
+                                        {{ possession_add_form.can_run_cuda }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.description.label_tag }}
+                                        {{ possession_add_form.description }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.core_num.label_tag }}
+                                        {{ possession_add_form.core_num }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.max_bandwidth.label_tag }}
+                                        {{ possession_add_form.max_bandwidth }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ possession_add_form.is_server.label_tag }}
+                                        {{ possession_add_form.is_server }}
+                                    </div>
+                                    <button id="possession_add_button" type="submit" class="btn btn-primary">提交</button>
+                                </form>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -559,12 +497,5 @@
     <!-- Custom scripts for all pages-->
     <script src="../static/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="../static/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../static/js/chart-pie-demo.js"></script>
-    <script src="../static/js/chart-area-demo.js"></script>
 </body>
-
 </html>

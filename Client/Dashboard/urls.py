@@ -6,4 +6,5 @@ urlpatterns = [
     path('personal_info',views.personal_info),
     path('change_password',views.change_password),
     path('possession_show',views.possession_show),
+    path('possession_add',views.possession_add),
 ]
