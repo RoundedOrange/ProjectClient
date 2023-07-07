@@ -18,3 +18,10 @@ class PossessionAddForm(forms.Form):
     max_bandwidth = forms.IntegerField(label="最大带宽（单位：MB/s）",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入最大带宽'}))
     is_server = forms.BooleanField(label="是否为服务器",required=False,widget=forms.CheckboxInput(attrs={'id':'is_server_checkbox'}))
     GPU_num = forms.IntegerField(label="GPU数",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入GPU数'}))
+
+class ChangeInfoForm(forms.Form):
+    nickname = forms.CharField(label="用户名",required=False,max_length=20,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入新用户名'}))
+    birth_date = forms.DateField(label='日期', widget=forms.DateInput(attrs={'type':'date'}),required=False)
+    signature = forms.CharField(label="签名",required=False,max_length=256,widget=forms.Textarea(attrs={'class':'input-material','placeholder':'请填写签名'}))
+    gender = forms.ChoiceField(choices=((True,'男'),(False,'女')), widget=forms.RadioSelect,required=False)
+    real_name = forms.CharField(label="真实姓名",required=False,max_length=10,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入真实姓名'}))

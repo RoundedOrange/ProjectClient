@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="author" content="DataWrangler">
 
-    <title>个人信息总览</title>
+    <title>更改账号信息</title>
 
     <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -382,35 +382,37 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">修改密码</h1>
+                    <div class="d-sm-flex   mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form d-flex align-items-center">
                                 <div class="content">
-                                    <form method="post" action="/dashboard/change_password" class="form-validate" id="loginFrom">
-                                        {% if change_password_form.captcha.errors %}
-                                            <div class="alert alert-warning">{{ change_password_form.captcha.errors }}</div>
-                                        {% elif message %}
+                                    <form method="post" action="/dashboard/change_info" class="form-validate" id="loginFrom">
+                                        {% if message %}
                                             <div class="alert alert-warning">{{ message }}</div>
                                         {% endif %}
                                         {% csrf_token %}
                                         <div class="form-group">
-                                            {{ change_password_form.old_password.label_tag }}
-                                            {{ change_password_form.old_password }}
+                                            {{ change_info_form.nickname.label_tag }}
+                                            {{ change_info_form.nickname }}
                                         </div>
                                         <div class="form-group">
-                                            {{ change_password_form.new_password.label_tag}}
-                                            {{ change_password_form.new_password }}
+                                            {{ change_info_form.birth_date.label_tag}}
+                                            {{ change_info_form.birth_date }}
                                         </div>
                                         <div class="form-group">
-                                            {{ change_password_form.repeat_password.label_tag}}
-                                            {{ change_password_form.repeat_password }}
+                                            {{ change_info_form.signature.label_tag}}
+                                            {{ change_info_form.signature }}
                                         </div>
                                         <div class="form-group">
-                                            {{ change_password_form.captcha.label_tag}}
-                                            {{ change_password_form.captcha }}
+                                            {{ change_info_form.gender.label_tag}}
+                                            {{ change_info_form.gender }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ change_info_form.real_name.label_tag}}
+                                            {{ change_info_form.real_name }}
                                         </div>
                                         <button id="login" type="submit" class="btn btn-primary">修改</button>
                                     </form>

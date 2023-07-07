@@ -14,7 +14,8 @@
         rel="stylesheet">
 
     <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="../static/css/font.css">
+    <link rel="stylesheet" href="../static/css/style.css" id="theme-stylesheet">
 </head>
 
 <body id="page-top">
@@ -22,168 +23,168 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">联邦学习主看板</div>
-            </a>
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">联邦学习主看板</div>
+    </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>主页</span></a>
-            </li>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="/">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>主页</span></a>
+    </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                个人账号
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        个人账号
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="personal_info">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>个人信息总览</span></a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="change_info">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>更改账号信息</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="change_password">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>修改密码</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        资产相关
+    </div>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapsePossession" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>资产管理</span>
+        </a>
+        <div id="collapsePossession" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item active" href="possession_show">拥有资产概览</a>
+                <a class="collapse-item active" href="">数据源管理</a>
+                <a class="collapse-item active" href="">数据集管理</a>
             </div>
+        </div>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="personal_info">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>个人信息总览</span></a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>更改账号信息</span></a>
-            </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-            <li class="nav-item">
-                <a class="nav-link" href="change_password">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>修改密码</span></a>
-            </li>
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        用户权限（仅管理员可见）
+    </div>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>用户权限管理</span></a>
+    </li>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                资产相关
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        任务相关
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item active">
+        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseTask" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>任务管理</span>
+        </a>
+        <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item active" href="">任务发布</a>
+                <a class="collapse-item active" href="">任务进度</a>
+                <a class="collapse-item active" href="">任务结果</a>
             </div>
+        </div>
+    </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="" data-toggle="collapse" data-target="#collapsePossession" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>资产管理</span>
-                </a>
-                <div id="collapsePossession" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="possession_show">拥有资产概览</a>
-                        <a class="collapse-item active" href="">数据源管理</a>
-                        <a class="collapse-item active" href="">数据集管理</a>
-                    </div>
-                </div>
-            </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        运维相关
+    </div>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                用户权限（仅管理员可见）
-            </div>
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>运维监控</span></a>
+    </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>用户权限管理</span></a>
-            </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <div class="sidebar-heading">
+        可信环境管理
+    </div>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>区块链感知监控</span></a>
+    </li>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                任务相关
-            </div>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseTask" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>任务管理</span>
-                </a>
-                <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="">任务发布</a>
-                        <a class="collapse-item active" href="">任务进度</a>
-                        <a class="collapse-item active" href="">任务结果</a>
-                    </div>
-                </div>
-            </li>
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        充值相关
+    </div>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>充值</span></a>
+    </li>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                运维相关
-            </div>
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>个人账单明细</span></a>
+    </li>
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>运维监控</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-            <div class="sidebar-heading">
-                可信环境管理
-            </div>
-
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>区块链感知监控</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                充值相关
-            </div>
-
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>充值</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>个人账单明细</span></a>
-            </li>
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
+</ul>
+<!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -359,7 +360,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Davis Lee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.nickname}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="../static/img/undraw_profile.svg">
                             </a>

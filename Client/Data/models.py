@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
-    nickname = models.CharField(max_length=10,null=False,unique=True)
+    nickname = models.CharField(max_length=20,null=False,unique=True)
     real_name = models.CharField(max_length=10,null=False)
     telephone = models.CharField(max_length=11)
     birth_date = models.DateField(null=True)

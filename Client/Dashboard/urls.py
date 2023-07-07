@@ -8,4 +8,5 @@ urlpatterns = [
     path('possession_show',views.possession_show),
     path('possession_add',views.possession_add),
     path('possession_delete',views.possession_delete),
+    path('change_info',views.change_info),
 ]
