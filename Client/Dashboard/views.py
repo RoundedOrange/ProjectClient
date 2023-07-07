@@ -48,6 +48,13 @@ def possession_show(request):
     except:
         message = "失败！"
         return render(request,'possession_show.html',locals())
+    try:
+        devices = models.Device.objects.filter()
+        return render(request,'possission_show.html',locals())
+
+    except:
+        message = "失败！"
+        return render(request,'possession_show.html',locals())
     return render(request,'possession_show.html',locals())
 def possession_add(request):
     if request.method == 'POST':
