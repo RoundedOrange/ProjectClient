@@ -43,15 +43,7 @@ def change_password(request):
 def possession_show(request):
     try:
         devices = models.Device.objects.filter()
-        return render(request,'possission_show.html',locals())
-
-    except:
-        message = "失败！"
         return render(request,'possession_show.html',locals())
-    try:
-        devices = models.Device.objects.filter()
-        return render(request,'possission_show.html',locals())
-
     except:
         message = "失败！"
         return render(request,'possession_show.html',locals())
@@ -92,3 +84,6 @@ def possession_add(request):
                 #return render(request,'possession_add.html',locals())
     possession_add_form = forms.PossessionAddForm()
     return render(request,'possession_add.html',locals())
+def possession_delete(request):
+    message = "删除成功！"
+    return render(request,'possession_show.html',locals())

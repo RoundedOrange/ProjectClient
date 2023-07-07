@@ -386,9 +386,11 @@
                         <h1 class="h3 mb-0 text-gray-800">资产总览</h1>&emsp;
                         <button type="button" class="btn btn-success" onclick="window.location.href='possession_add'">增加资产</button>&emsp;
                         <button type="button" class="btn btn-primary">修改资产信息</button>&emsp;
-                        <button type="button" class="btn btn-danger">删除资产</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location.href='possession_show'">删除资产</button>
                     </div>
-                    
+                    {% if message %}
+                        <div class="alert alert-warning">{{ message }}</div>
+                    {% endif %}
                     
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
