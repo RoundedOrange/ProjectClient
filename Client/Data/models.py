@@ -37,7 +37,7 @@ class Device(models.Model):
         ('4','iOS'),
         ('5','Android'),
     )
-    OS = models.CharField(max_length=1,choices=OS_CHOICES,null=False)
+    OS = models.CharField(max_length=1,choices=OS_CHOICES,null=True)
     CPU = models.CharField(max_length=20,null=True)
     STATUS_CHOICES = (
         ('0','Running'),
@@ -46,13 +46,15 @@ class Device(models.Model):
         ('3','Offline'),
     )
     status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='0')
-    RAM = models.IntegerField()
-    ROM = models.IntegerField()
-    IP = models.CharField(max_length=15)
+    RAM = models.IntegerField(null=True)
+    ROM = models.IntegerField(null=True)
+    IP = models.CharField(max_length=15,null=True)
     can_run_cuda = models.BooleanField(default=False)
     description = models.TextField(max_length=100,default="")
     core_num = models.IntegerField(default=1)
-    max_bandwidth = models.IntegerField()
+    max_bandwidth = models.IntegerField(null=True)
+    is_server = models.BooleanField(default=False)
+    GPU_num = models.IntegerField(default=0)
 
 class Task(models.Model):
     task_id = models.AutoField(primary_key=True)
