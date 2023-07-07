@@ -383,10 +383,10 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex   mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">资产总览</h1>&emsp;
+                        <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
                         <button type="button" class="btn btn-success" onclick="window.location.href='possession_add'">增加资产</button>&emsp;
                         <button type="button" class="btn btn-primary">修改资产信息</button>&emsp;
-                        <button type="button" class="btn btn-danger" onclick="window.location.href='possession_show'">删除资产</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location.href='possession_delete'">删除资产</button>
                     </div>
                     {% if message %}
                         <div class="alert alert-warning">{{ message }}</div>
@@ -491,7 +491,7 @@
                 <div class="modal-body">点击“退出”来退出。</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                    <a class="btn btn-primary" href="">退出</a>
+                    <a class="btn btn-primary" href="/login/logout">退出</a>
                 </div>
             </div>
         </div>

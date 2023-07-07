@@ -86,4 +86,10 @@ def possession_add(request):
     return render(request,'possession_add.html',locals())
 def possession_delete(request):
     message = "删除成功！"
+    try:
+        devices = models.Device.objects.filter()
+        return render(request,'possession_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'possession_show.html',locals())
     return render(request,'possession_show.html',locals())
