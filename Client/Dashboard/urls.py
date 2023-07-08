@@ -9,5 +9,6 @@ urlpatterns = [
     path('possession_add',views.possession_add),
     path('possession_delete',views.possession_delete),
     path('change_info',views.change_info),
+    path('task_show',views.task_show),
     
 ]

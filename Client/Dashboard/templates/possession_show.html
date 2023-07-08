@@ -136,7 +136,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item active" href="">任务发布</a>
-                <a class="collapse-item active" href="">任务进度</a>
+                <a class="collapse-item active" href="task_show">任务进度</a>
                 <a class="collapse-item active" href="">任务结果</a>
             </div>
         </div>
@@ -381,18 +381,18 @@
                     <form method="post"  method="post" class="form-validate" id="tableForm">
                         <div class="d-sm-flex   mb-4">
                             <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
-                            <button type="button" class="btn btn-success" onclick="window.location.href='/possession_add'">增加资产</button>&emsp;
-                            <input type="text" id="target_id" name="target_id" style="display:none">
+                            <button type="button" class="btn btn-success" onclick="window.location.href='/possession_add?target_id=0'">增加资产</button>&emsp;
                             <button type="button" class="btn btn-primary" onclick="
                             {
                                 var obj = document.getElementsByName('checkbox');
-                            var checkList = [];
-                            for(k in obj){
-                                if(obj[k].checked)
-                                    checkList.push(obj[k].value);
-                            }
-                            $('#target_id').val(checkList[0]);
-                            document.getElementById('tableForm').submit();
+                                var checkList = [];
+                                for(k in obj)
+                                {
+                                    if(obj[k].checked)
+                                        checkList.push(obj[k].value);
+                                }
+                                alert('即将对ID为'+checkList[0]+'的设备进行修改');
+                                window.location.href=('/possession_add?target_id='+checkList[0]);
                             }">修改资产信息</button>&emsp;
                             <button type="submit" class="btn btn-danger" formaction="/possession_delete">删除资产</button>
                         </div>

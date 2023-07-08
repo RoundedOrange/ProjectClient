@@ -97,9 +97,8 @@ def possession_add(request):
     if not request.session.get('is_login',None):
         return redirect('/login')
     user = models.User.objects.get(user_id=request.session.get('user_id',None))
-    target_id = request.POST.get('target_id')
-    print(target_id)
-    if target_id == None:
+    target_id = request.GET.get('target_id')
+    if target_id == None or int(target_id) != 0:
         if request.method == 'POST':
             possession_add_form = forms.PossessionAddForm(request.POST)
             message = "请检查填写的内容！"
@@ -127,9 +126,22 @@ def possession_add(request):
                 device.GPU_num = GPU_num if (GPU_num != None) else 0
                 device.IP = '0.0.0.0'
                 device.save()
-                message = "添加成功！"
+                message = "操作成功！"
                 return render(request,'possession_add.html',locals())
-        possession_add_form = forms.PossessionAddForm()
+        possession = models.Device.objects.get(device_id=int(target_id))
+        possession_add_form = forms.PossessionAddForm({
+                        "OS": possession.OS,
+                        "CPU": possession.CPU,
+                        "RAM": possession.RAM,
+                        "ROM": possession.ROM,
+                        "can_run_cuda": possession.can_run_cuda,
+                        "description": possession.description,
+                        "core_num": possession.core_num,
+                        "max_bandwidth": possession.max_bandwidth,
+                        "is_server": possession.is_server,
+                        "GPU_num": possession.GPU_num,
+                    }
+                )
         return render(request,'possession_add.html',locals())
     else:
         if request.method == 'POST':
@@ -161,22 +173,9 @@ def possession_add(request):
                 device.save()
                 message = "添加成功！"
                 return render(request,'possession_add.html',locals())
-        possession = models.Device.objects.get(device_id=target_id)
-        possession_add_form = forms.PossessionAddForm(
-                    initial=[{
-                        "OS": possession.OS,
-                        "CPU": possession.CPU,
-                        "RAM": possession.RAM,
-                        "ROM": possession.ROM,
-                        "can_run_cuda": possession.can_run_cuda,
-                        "description": possession.description,
-                        "core_num": possession.core_num,
-                        "max_bandwidth": possession.max_bandwidth,
-                        "is_server": possession.OS,
-                        "GPU_num": possession.GPU_num,
-                    }]
-                )
+        possession_add_form = forms.PossessionAddForm()
         return render(request,'possession_add.html',locals())
+        
         
 def possession_delete(request):
     if not request.session.get('is_login',None):
@@ -193,3 +192,14 @@ def possession_delete(request):
         message = "失败！"
         return render(request,'possession_show.html',locals())
     return render(request,'possession_show.html',locals())
+def task_show(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    try:
+        tasks = models.Task.objects.filter()
+        return render(request,'task_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'task_show.html',locals())
+    return render(request,'task_show.html',locals())
