@@ -147,3 +147,7 @@ def possession_delete(request):
         message = "失败！"
         return render(request,'possession_show.html',locals())
     return render(request,'possession_show.html',locals())
+def possession_change(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    return render(request,'possession_show.html',locals())
