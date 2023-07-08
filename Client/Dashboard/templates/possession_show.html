@@ -378,12 +378,23 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <form method="post" action="/possession_delete" class="form-validate" id="loginFrom">
+                    <form method="post"  method="post" class="form-validate" id="tableForm">
                         <div class="d-sm-flex   mb-4">
                             <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
-                            <button type="button" class="btn btn-success" onclick="window.location.href='possession_add'">增加资产</button>&emsp;
-                            <button type="button" class="btn btn-primary">修改资产信息</button>&emsp;
-                            <button type="submit" class="btn btn-danger">删除资产</button>
+                            <button type="button" class="btn btn-success" onclick="window.location.href='/possession_add'">增加资产</button>&emsp;
+                            <input type="text" id="target_id" name="target_id" style="display:none">
+                            <button type="button" class="btn btn-primary" onclick="
+                            {
+                                var obj = document.getElementsByName('checkbox');
+                            var checkList = [];
+                            for(k in obj){
+                                if(obj[k].checked)
+                                    checkList.push(obj[k].value);
+                            }
+                            $('#target_id').val(checkList[0]);
+                            document.getElementById('tableForm').submit();
+                            }">修改资产信息</button>&emsp;
+                            <button type="submit" class="btn btn-danger" formaction="/possession_delete">删除资产</button>
                         </div>
                         {% if message %}
                             <div class="alert alert-warning">{{ message }}</div>

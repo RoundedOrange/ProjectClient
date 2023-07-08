@@ -97,41 +97,87 @@ def possession_add(request):
     if not request.session.get('is_login',None):
         return redirect('/login')
     user = models.User.objects.get(user_id=request.session.get('user_id',None))
-    if request.method == 'POST':
-        possession_add_form = forms.PossessionAddForm(request.POST)
-        message = "请检查填写的内容！"
-        if possession_add_form.is_valid():
-            device = models.Device()
-            #try:
-            OS = possession_add_form.cleaned_data.get('OS')
-            CPU = possession_add_form.cleaned_data.get('CPU')
-            RAM = possession_add_form.cleaned_data.get('RAM')
-            ROM = possession_add_form.cleaned_data.get('ROM')
-            can_run_cuda = possession_add_form.cleaned_data.get('can_run_cuda')
-            description = possession_add_form.cleaned_data.get('description')
-            core_num = possession_add_form.cleaned_data.get('core_num')
-            max_bandwidth = possession_add_form.cleaned_data.get('max_bandwidth')
-            is_server = possession_add_form.cleaned_data.get('is_server')
-            GPU_num = possession_add_form.cleaned_data.get('GPU_num')
-            device.OS = OS
-            device.CPU = CPU
-            device.RAM = RAM if (RAM != '') else 0
-            device.ROM = ROM if (ROM != '') else 0
-            device.can_run_cuda = can_run_cuda
-            device.description = description
-            device.core_num = core_num if (core_num != None) else 0
-            device.max_bandwidth = max_bandwidth if (max_bandwidth != None) else 0
-            device.is_server = is_server
-            device.GPU_num = GPU_num if (GPU_num != None) else 0
-            device.IP = '0.0.0.0'
-            device.save()
-            message = "添加成功！"
-            return render(request,'possession_add.html',locals())
-            #except:
-                #message = "添加失败！"
-                #return render(request,'possession_add.html',locals())
-    possession_add_form = forms.PossessionAddForm()
-    return render(request,'possession_add.html',locals())
+    target_id = request.POST.get('target_id')
+    print(target_id)
+    if target_id == None:
+        if request.method == 'POST':
+            possession_add_form = forms.PossessionAddForm(request.POST)
+            message = "请检查填写的内容！"
+            if possession_add_form.is_valid():
+                device = models.Device()
+                OS = possession_add_form.cleaned_data.get('OS')
+                CPU = possession_add_form.cleaned_data.get('CPU')
+                RAM = possession_add_form.cleaned_data.get('RAM')
+                ROM = possession_add_form.cleaned_data.get('ROM')
+                can_run_cuda = possession_add_form.cleaned_data.get('can_run_cuda')
+                description = possession_add_form.cleaned_data.get('description')
+                core_num = possession_add_form.cleaned_data.get('core_num')
+                max_bandwidth = possession_add_form.cleaned_data.get('max_bandwidth')
+                is_server = possession_add_form.cleaned_data.get('is_server')
+                GPU_num = possession_add_form.cleaned_data.get('GPU_num')
+                device.OS = OS
+                device.CPU = CPU
+                device.RAM = RAM if (RAM != '') else 0
+                device.ROM = ROM if (ROM != '') else 0
+                device.can_run_cuda = can_run_cuda
+                device.description = description
+                device.core_num = core_num if (core_num != None) else 0
+                device.max_bandwidth = max_bandwidth if (max_bandwidth != None) else 0
+                device.is_server = is_server
+                device.GPU_num = GPU_num if (GPU_num != None) else 0
+                device.IP = '0.0.0.0'
+                device.save()
+                message = "添加成功！"
+                return render(request,'possession_add.html',locals())
+        possession_add_form = forms.PossessionAddForm()
+        return render(request,'possession_add.html',locals())
+    else:
+        if request.method == 'POST':
+            possession_add_form = forms.PossessionAddForm(request.POST)
+            message = "请检查填写的内容！"
+            if possession_add_form.is_valid():
+                device = models.Device()
+                OS = possession_add_form.cleaned_data.get('OS')
+                CPU = possession_add_form.cleaned_data.get('CPU')
+                RAM = possession_add_form.cleaned_data.get('RAM')
+                ROM = possession_add_form.cleaned_data.get('ROM')
+                can_run_cuda = possession_add_form.cleaned_data.get('can_run_cuda')
+                description = possession_add_form.cleaned_data.get('description')
+                core_num = possession_add_form.cleaned_data.get('core_num')
+                max_bandwidth = possession_add_form.cleaned_data.get('max_bandwidth')
+                is_server = possession_add_form.cleaned_data.get('is_server')
+                GPU_num = possession_add_form.cleaned_data.get('GPU_num')
+                device.OS = OS
+                device.CPU = CPU
+                device.RAM = RAM if (RAM != '') else 0
+                device.ROM = ROM if (ROM != '') else 0
+                device.can_run_cuda = can_run_cuda
+                device.description = description
+                device.core_num = core_num if (core_num != None) else 0
+                device.max_bandwidth = max_bandwidth if (max_bandwidth != None) else 0
+                device.is_server = is_server
+                device.GPU_num = GPU_num if (GPU_num != None) else 0
+                device.IP = '0.0.0.0'
+                device.save()
+                message = "添加成功！"
+                return render(request,'possession_add.html',locals())
+        possession = models.Device.objects.get(device_id=target_id)
+        possession_add_form = forms.PossessionAddForm(
+                    initial=[{
+                        "OS": possession.OS,
+                        "CPU": possession.CPU,
+                        "RAM": possession.RAM,
+                        "ROM": possession.ROM,
+                        "can_run_cuda": possession.can_run_cuda,
+                        "description": possession.description,
+                        "core_num": possession.core_num,
+                        "max_bandwidth": possession.max_bandwidth,
+                        "is_server": possession.OS,
+                        "GPU_num": possession.GPU_num,
+                    }]
+                )
+        return render(request,'possession_add.html',locals())
+        
 def possession_delete(request):
     if not request.session.get('is_login',None):
         return redirect('/login')
@@ -146,8 +192,4 @@ def possession_delete(request):
     except:
         message = "失败！"
         return render(request,'possession_show.html',locals())
-    return render(request,'possession_show.html',locals())
-def possession_change(request):
-    if not request.session.get('is_login',None):
-        return redirect('/login')
     return render(request,'possession_show.html',locals())
