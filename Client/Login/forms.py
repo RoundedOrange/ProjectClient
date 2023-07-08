@@ -12,3 +12,7 @@ class RegisterForm(forms.Form):
     password2 = forms.CharField(label="确认密码",max_length=256,widget=forms.PasswordInput(attrs={'class':'input-material','placeholder':'再次输入密码'}))
     telephone = forms.CharField(label="手机号",max_length=20,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入11位手机号'}))
     captcha = forms.CharField(label="验证码",max_length=6,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入6位验证码'}))
+class FindpdForm(forms.Form):
+    telephone = forms.CharField(label="手机号", max_length=20, widget=forms.TextInput(attrs={'class': 'input-material', 'placeholder': '请输入11位手机号'}))
+    captcha = forms.CharField(label="验证码",max_length=6,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入6位验证码'}))
+    new_password = forms.CharField(label="输入新密码",max_length=256,widget=forms.PasswordInput(attrs={'class':'input-material','placeholder':'请输入新密码'}))

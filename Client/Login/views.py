@@ -141,3 +141,33 @@ def logout(request):
         return redirect('/login/')
     request.session.flush()
     return redirect('/login/')
+
+
+# 处理找回密码
+def findpd(request):
+    if request.method == 'POST':
+        form = forms.FindpdForm(request.POST)
+        if form.is_valid():
+            telephone = form.cleaned_data['telephone']
+            captcha = form.cleaned_data['captcha']
+
+            # 假设验证成功，进行密码重置操作
+            try:
+                # 根据手机号查找用户
+                user = models.User.objects.get(telephone=telephone)
+            except models.User.DoesNotExist:
+                # 用户不存在
+                return render(request, 'findpd.html', {'findpd_form': form, 'message': '用户不存在'},locals())
+
+            # 执行密码重置操作
+            # 这里可以根据你的业务逻辑来修改密码
+            new_password = form.cleaned_data['new_password']  # 假设重置后的密码
+            user.password = hash_code(new_password)
+            user.save()
+            message = "重置成功！"
+            return redirect('/login/')
+    else:
+        form = forms.FindpdForm()
+
+    return render(request, 'findpd.html', {'findpd_form': form})
+
