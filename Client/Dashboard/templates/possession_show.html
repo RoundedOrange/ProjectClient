@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="author" content="DataWrangler">
+
+    <title>拥有资产概览</title>
+
+    <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/font.css">
+    <link rel="stylesheet" href="../static/css/style.css" id="theme-stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">联邦学习主看板</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="/">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>主页</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        个人账号
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="personal_info">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>个人信息总览</span></a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="change_info">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>更改账号信息</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="change_password">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>修改密码</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        资产相关
+    </div>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapsePossession" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>资产管理</span>
+        </a>
+        <div id="collapsePossession" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item active" href="possession_show">拥有资产概览</a>
+                <a class="collapse-item active" href="">数据源管理</a>
+                <a class="collapse-item active" href="">数据集管理</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        管理员相关
+    </div>
+    
+    <li class="nav-item active">
+        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>后台管理</span>
+        </a>
+        <div id="collapseAdmin" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item active" href="">用户权限管理</a>
+                <a class="collapse-item active" href="">运维监控</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        任务相关
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item active">
+        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseTask" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>任务管理</span>
+        </a>
+        <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item active" href="">任务发布</a>
+                <a class="collapse-item active" href="">任务进度</a>
+                <a class="collapse-item active" href="">任务结果</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <div class="sidebar-heading">
+        可信环境管理
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>区块链感知监控</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        充值相关
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>充值</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>个人账单明细</span></a>
+    </li>
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
+<!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="搜索..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="搜索..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <!-- Counter - Alerts -->
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    通知中心
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">2023年6月25日</div>
+                                        <span class="font-weight-bold">李晓添加了一个资源！</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">2023年6月26日</div>
+                                        张骏祺摸鱼摸了一天！
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">2023年6月27日</div>
+                                        彭志远解决了感知机问题！
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">展示全部通知</a>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    消息中心
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="../static/img/undraw_profile_1.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">快去开会！</div>
+                                        <div class="small text-gray-500">李晓 2分钟前</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="../static/img/undraw_profile_2.svg"
+                                            alt="...">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">好想吃饭啊</div>
+                                        <div class="small text-gray-500">郑嘉骏 3分钟前</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="../static/img/undraw_profile_3.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">你所热爱的，就是你的生活。</div>
+                                        <div class="small text-gray-500">张骏祺 1小时前</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">别卷了别卷了</div>
+                                        <div class="small text-gray-500">彭志远 5小时前</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">查看更多消息</a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.nickname}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="../static/img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    登出
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <form method="post" action="/possession_delete" class="form-validate" id="loginFrom">
+                        <div class="d-sm-flex   mb-4">
+                            <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
+                            <button type="button" class="btn btn-success" onclick="window.location.href='possession_add'">增加资产</button>&emsp;
+                            <button type="button" class="btn btn-primary">修改资产信息</button>&emsp;
+                            <button type="submit" class="btn btn-danger">删除资产</button>
+                        </div>
+                        {% if message %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                        {% endif %}
+                        {% csrf_token %}
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">资产列表</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        选择
+                                                    </th>
+                                                    <th>设备ID</th>
+                                                    <th>OS</th>
+                                                    <th>CPU</th>
+                                                    <th>状态</th>
+                                                    <th>RAM</th>
+                                                    <th>ROM</th>
+                                                    <th>IP</th>
+                                                    <th>是否能用CUDA</th>
+                                                    <th>描述</th>
+                                                    <th>核心数</th>
+                                                    <th>最大带宽</th>
+                                                    <th>是否为服务器</th>
+                                                    <th>GPU数</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for device in devices%}
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"  name="checkbox" value={{device.device_id}}>
+                                                          </div>
+                                                        </td>
+                                                        <td>{{ device.device_id }}</td>
+                                                        <td>{{ device.OS }}</td>
+                                                        <td>{{ device.CPU}}</td>
+                                                        <td>{{ device.status}}</td>
+                                                        <td>{{ device.RAM}}</td>
+                                                        <td>{{ device.ROM}}</td>
+                                                        <td>{{ device.IP}}</td>
+                                                        <td>{{ device.can_run_cuda}}</td>
+                                                        <td>{{ device.description}}</td>
+                                                        <td>{{ device.core_num}}</td>
+                                                        <td>{{ device.max_bandwidth}}</td>
+                                                        <td>{{ device.is_server}}</td>
+                                                        <td>{{ device.GPU_num}}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table> 
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; DataWrangler</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">确认要退出吗？</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">点击“退出”来退出。</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                    <a class="btn btn-primary" href="/login/logout">退出</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../static/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../static/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../static/js/chart-pie-demo.js"></script>
+    <script src="../static/js/chart-area-demo.js"></script>
+</body>
+
+</html>

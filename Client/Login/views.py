@@ -40,7 +40,6 @@ def login(request):
             nickname = login_form.cleaned_data.get('nickname')
             password = login_form.cleaned_data.get('password')
             try:
-                print("搜索用户")
                 user = models.User.objects.get(nickname=nickname)
             except:
                 message = '用户不存在！'
