@@ -3,15 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>register</title>
+    <title>找回密码</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="../static/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/css/font.css">
     <link rel="stylesheet" href="../static/css/style.css" id="theme-stylesheet">
-
+    <style>
+      h1,p {
+        font-family: "楷体", KaiTi, serif;
+      }
+      p {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <div class="page login-page">
@@ -23,9 +28,12 @@
               <div class="info d-flex align-items-center">
                 <div class="content">
                   <div class="logo">
-                    <h1>欢迎注册</h1>
+                    <h1>找回密码</h1>
                   </div>
                   <p>隐私计算平台</p>
+                  <div>
+                    <p>该平台基于联邦学习采用多种隐私加密算法，能为您提供最合适的隐私加密需求，感谢您的选择，让我们为您的秘密保驾护航</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -33,36 +41,32 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form method="post" action="/login/register" class="form-validate" id="loginFrom">
-                    {% if register_form.captcha.errors %}
-                      <div class="alert alert-warning">{{ register_form.captcha.errors }}</div>
+                  <form method="post" action="/login/findpd" class="form-validate" id="FindpdForm">
+                    {% if findpd_form.captcha.errors %}
+                      <div class="alert alert-warning">验证码输入有误！</div>
                     {% elif message %}
                       <div class="alert alert-warning">{{ message }}</div>
                     {% endif %}
                     {% csrf_token %}
                     <div class="form-group">
-                      {{ register_form.nickname.label_tag }}
-                      {{ register_form.nickname }}
+                      {{ findpd_form.telephone.label_tag }}
+                      {{ findpd_form.telephone }}
                     </div>
                     <div class="form-group">
-                      {{ register_form.password1.label_tag }}
-                      {{ register_form.password1 }}
+                      {{ findpd_form.captcha.label_tag }}
+                      {{ findpd_form.captcha }}
+                      <input id="scaptcha" type="button" class="btn btn-primary" value="发送验证码" onclick="sendCaptcha()">
                     </div>
                     <div class="form-group">
-                      {{ register_form.password2.label_tag }}
-                      {{ register_form.password2 }}
+                      {{ findpd_form.new_password.label_tag }}
+                      {{ findpd_form.new_password }}
                     </div>
-                    <div class="form-group">
-                      {{ register_form.telephone.label_tag }}
-                      {{ register_form.telephone }}
-                    </div>
-                    <div class="form-group">
-                      {{ register_form.captcha }}
-                    <input id="scaptcha" type="button" class="btn btn-primary" value="发送验证码" onclick="sendCaptcha()">
-                    </div>
-                    <button id="login" type="submit" class="btn btn-primary">注册</button>
+                    <button id="findPassword" type="submit" class="btn btn-primary">确定</button>
+
                   </form>
-                  <small>已有账号?</small><a href="./" class="signup">&nbsp;登录</a>
+                  <br />
+                  <small>没有账号?</small><a href="./register" class="signup">&nbsp;注册</a>
+                  <div><small>返回登录?</small><a href="./" class="signup">&nbsp;返回登录</a></div>
                 </div>
               </div>
             </div>
@@ -70,15 +74,18 @@
         </div>
       </div>
     </div>
-<!-- JavaScript files-->
+    <!-- JavaScript files-->
     <script src="../static/js/jquery.js"></script>
     <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/vendor/jquery.validate.js"></script><!--表单验证-->
+    <!-- Main File-->
+    <script src="../static/js/front.js"></script>
     <script>
+
     function sendCaptcha() {
         var telephone = document.getElementById('id_telephone').value;
         var captcha = document.getElementById('id_captcha').value;
         var button = document.getElementById('scaptcha');
-
         if (!telephone) {
             alert('请输入手机号码！');
             return;
@@ -99,7 +106,7 @@
             success: function (response) {
                 if (response.status === 'success') {
                     alert('验证码已发送，请注意查收！');
-                    ar count = 60;
+                    var count = 60;
         var timer = setInterval(function () {
           count--;
           button.value = count + '秒后可重新发送';
@@ -123,10 +130,12 @@
             }
         });
     }
-</script>
-
-
-
-
+      $('.captcha').click(function () {
+        $.getJSON("/captcha/refresh/", function (result) {
+          $('.captcha').attr('src', result['image_url']);
+          $('#id_captcha_0').val(result['key'])
+        });
+      });
+    </script>
   </body>
 </html>
