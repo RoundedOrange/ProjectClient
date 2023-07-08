@@ -25,3 +25,11 @@ class ChangeInfoForm(forms.Form):
     signature = forms.CharField(label="签名",required=False,max_length=256,widget=forms.Textarea(attrs={'class':'input-material','placeholder':'请填写签名'}))
     gender = forms.ChoiceField(choices=((True,'男'),(False,'女')), widget=forms.RadioSelect,required=False)
     real_name = forms.CharField(label="真实姓名",required=False,max_length=10,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入真实姓名'}))
+
+class DatasetAddForm(forms.Form):
+    total_size = forms.IntegerField(label="总大小",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入总大小'}))
+    description = forms.CharField(label="描述",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入数据集描述'}))
+    dataset_name = forms.CharField(label="数据集名称",max_length=256,required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入数据集名称'}))
+    data_num = forms.IntegerField(label="条目数",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入数据条目数'}))
+    is_graph = forms.BooleanField(label="是否为图",required=False,widget=forms.CheckboxInput(attrs={'id':'is_graph_checkbox'}))
+    graph_size =  forms.IntegerField(label="图大小",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入图大小'}))

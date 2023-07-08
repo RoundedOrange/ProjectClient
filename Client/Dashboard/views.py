@@ -192,6 +192,92 @@ def possession_delete(request):
         message = "失败！"
         return render(request,'possession_show.html',locals())
     return render(request,'possession_show.html',locals())
+def dataset_show(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    try:
+        datasets = models.Dataset.objects.filter()
+        return render(request,'dataset_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'dataset_show.html',locals())
+    return render(request,'dataset_show.html',locals())
+def dataset_add(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    target_id = request.GET.get('target_id')
+    if target_id == None or int(target_id) != 0:
+        if request.method == 'POST':
+            dataset_add_form = forms.DatasetAddForm(request.POST)
+            message = "请检查填写的内容！"
+            if dataset_add_form.is_valid():
+                dataset = models.Dataset()
+                total_size = dataset_add_form.cleaned_data.get('total_size')
+                description = dataset_add_form.cleaned_data.get('description')
+                dataset_name = dataset_add_form.cleaned_data.get('dataset_name')
+                data_num = dataset_add_form.cleaned_data.get('data_num')
+                is_graph = dataset_add_form.cleaned_data.get('is_graph')
+                graph_size = dataset_add_form.cleaned_data.get('graph_size')
+                dataset.total_size = total_size
+                dataset.description = description
+                dataset.dataset_name = dataset_name
+                dataset.data_num = data_num
+                dataset.is_graph = is_graph
+                dataset.graph_size = graph_size
+                dataset.save()
+                message = "操作成功！"
+                return render(request,'dataset_add.html',locals())
+        dataset = models.Dataset.objects.get(dataset_id=int(target_id))
+        dataset_add_form = forms.DatasetAddForm({
+                        "total_size": dataset.total_size,
+                        "description": dataset.description,
+                        "dataset_name": dataset.dataset_name,
+                        "data_num": dataset.data_num,
+                        "is_graph": dataset.is_graph,
+                        "graph_size": dataset.graph_size,
+                    }
+                )
+        return render(request,'dataset_add.html',locals())
+    else:
+        if request.method == 'POST':
+            dataset_add_form = forms.DatasetAddForm(request.POST)
+            message = "请检查填写的内容！"
+            if dataset_add_form.is_valid():
+                dataset = models.Dataset()
+                total_size = dataset_add_form.cleaned_data.get('total_size')
+                description = dataset_add_form.cleaned_data.get('description')
+                dataset_name = dataset_add_form.cleaned_data.get('dataset_name')
+                data_num = dataset_add_form.cleaned_data.get('data_num')
+                is_graph = dataset_add_form.cleaned_data.get('is_graph')
+                graph_size = dataset_add_form.cleaned_data.get('graph_size')
+                dataset.total_size = total_size
+                dataset.description = description
+                dataset.dataset_name = dataset_name
+                dataset.data_num = data_num
+                dataset.is_graph = is_graph
+                dataset.graph_size = graph_size
+                dataset.save()
+                message = "操作成功！"
+                return render(request,'dataset_add.html',locals())
+        dataset_add_form = forms.DatasetAddForm()
+        return render(request,'dataset_add.html',locals())
+def dataset_delete(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    array = request.POST.getlist('checkbox')
+    for id in array:
+        models.Dataset.objects.get(dataset_id=id).delete()
+    message = "删除成功！"
+    try:
+        datasets = models.Dataset.objects.filter()
+        return render(request,'dataset_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'dataset_show.html',locals())
+    return render(request,'dataset_show.html',locals())
 def task_show(request):
     if not request.session.get('is_login',None):
         return redirect('/login')

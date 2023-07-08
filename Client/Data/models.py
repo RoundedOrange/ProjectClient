@@ -18,8 +18,12 @@ class User(models.Model):
 
 class Dataset(models.Model):
     dataset_id = models.AutoField(primary_key=True)
-    size = models.IntegerField()
+    total_size = models.IntegerField(null=True)
     description = models.TextField(max_length=100,default="")
+    dataset_name = models.CharField(max_length=256,null=True)
+    data_num = models.IntegerField(null=True)
+    is_graph = models.BooleanField(null=True)
+    graph_size = models.IntegerField(null=True)
 
 class User_Dataset(models.Model):
     user = models.ForeignKey('User',on_delete=models.CASCADE)
