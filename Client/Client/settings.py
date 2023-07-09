@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'FederatedLearning',
         'USER': 'client',
         'PASSWORD': 'password',
-        'HOST': '114.115.170.72',
+        'HOST': '124.223.174.121',
         'POST': '3306'
     }
 }

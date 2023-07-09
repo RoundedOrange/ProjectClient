@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.utils import timezone
 from Dashboard import forms
 from Data import models
 import hashlib
@@ -282,6 +283,43 @@ def task_show(request):
     if not request.session.get('is_login',None):
         return redirect('/login')
     user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    try:
+        tasks = models.Task.objects.filter()
+        return render(request,'task_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'task_show.html',locals())
+    return render(request,'task_show.html',locals())
+def task_add(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    if request.method == 'POST':
+        task_add_form = forms.TaskAddForm(request.POST)
+        message = "请检查填写的内容！"
+        if task_add_form.is_valid():
+            task = models.Task()
+            start_time = timezone.now()
+            dataset = task_add_form.cleaned_data.get('dataset')
+            device = task_add_form.cleaned_data.get('device')
+    
+            task.start_time = start_time
+            task.dataset = dataset
+            task.device = device
+            task.publisher = models.User.objects.get(user_id = request.session.get('user_id'))
+            task.save()
+            message = "操作成功！"
+            return render(request,'task_add.html',locals())
+    task_add_form = forms.TaskAddForm()
+    return render(request,'task_add.html',locals())
+def task_delete(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    array = request.POST.getlist('checkbox')
+    for id in array:
+        models.Task.objects.get(task_id=id).delete()
+    message = "删除成功！"
     try:
         tasks = models.Task.objects.filter()
         return render(request,'task_show.html',locals())

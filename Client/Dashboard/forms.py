@@ -1,6 +1,6 @@
 from django import forms
 from captcha.fields import CaptchaField
-
+from Data import models
 class ChangePasswordForm(forms.Form):
     old_password = forms.CharField(label="旧密码",max_length=256,widget=forms.PasswordInput(attrs={'class':'input-material','placeholder':'请输入旧密码','autofocus':''}))
     new_password = forms.CharField(label="新密码",max_length=256,widget=forms.PasswordInput(attrs={'class':'input-material','placeholder':'请输入新密码'}))
@@ -33,3 +33,7 @@ class DatasetAddForm(forms.Form):
     data_num = forms.IntegerField(label="条目数",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入数据条目数'}))
     is_graph = forms.BooleanField(label="是否为图",required=False,widget=forms.CheckboxInput(attrs={'id':'is_graph_checkbox'}))
     graph_size =  forms.IntegerField(label="图大小",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入图大小'}))
+
+class TaskAddForm(forms.Form):
+    dataset = forms.ModelChoiceField(label='数据集',queryset=models.Dataset.objects.all())
+    device = forms.ModelChoiceField(label='设备',queryset=models.Device.objects.all())
