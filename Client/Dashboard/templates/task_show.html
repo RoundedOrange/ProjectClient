@@ -391,9 +391,14 @@
                                                     <th>结束时间</th>
                                                     <th>准确率</th>
                                                     <th>采用数据集ID</th>
-                                                    <th>采用设备ID</th>
+                                                    <th>采用集群ID</th>
                                                     <th>发布者ID</th>
                                                     <th>状态</th>
+                                                    <th>安全性</th>
+                                                    <th>速度</th>
+                                                    <th>是否开放</th>
+                                                    <th>是否使用联邦学习</th>
+                                                    <th>操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -409,9 +414,14 @@
                                                         <td>{{ task.end_time }}</td>
                                                         <td>{{ task.accuracy }}</td>
                                                         <td>{{ task.dataset_id }}</td>
-                                                        <td>{{ task.device_id }}</td>
-                                                        <td>{{ task.publisher }}</td>
+                                                        <td>{{ task.cluster_id }}</td>
+                                                        <td>{{ task.publisher_id }}</td>
                                                         <td>{{ task.status }}</td>
+                                                        <td>{{ task.safety }}</td>
+                                                        <td>{{ task.speed }}</td>
+                                                        <td>{{ task.open_source }}</td>
+                                                        <td>{{ task.use_fed_model }}</td>
+                                                        <td><button type="button" class="btn btn-primary" onclick="window.open('{{task.log_name}}')">下载日志</a></button>&emsp;<button type="button" class="btn btn-primary" onclick="window.open('{{task.parameter_file_name}}')">下载模型</button></td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>

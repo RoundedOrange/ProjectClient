@@ -301,11 +301,18 @@ def task_add(request):
             task = models.Task()
             start_time = timezone.now()
             dataset = task_add_form.cleaned_data.get('dataset')
-            device = task_add_form.cleaned_data.get('device')
-    
+            cluster = task_add_form.cleaned_data.get('cluster')
+            open_source = task_add_form.cleaned_data.get('open_source')
+            use_fed_model = task_add_form.cleaned_data.get('use_fed_model')
+            safety = request.POST.get('safety',None)
+            speed = request.POST.get('speed',None)
             task.start_time = start_time
             task.dataset = dataset
-            task.device = device
+            task.cluster = cluster
+            task.open_source = open_source
+            task.use_fed_model = use_fed_model
+            task.safety = safety
+            task.speed = speed
             task.publisher = models.User.objects.get(user_id = request.session.get('user_id'))
             task.save()
             message = "操作成功！"

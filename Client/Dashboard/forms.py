@@ -36,4 +36,6 @@ class DatasetAddForm(forms.Form):
 
 class TaskAddForm(forms.Form):
     dataset = forms.ModelChoiceField(label='数据集',queryset=models.Dataset.objects.all())
-    device = forms.ModelChoiceField(label='设备',queryset=models.Device.objects.all())
+    cluster = forms.ModelChoiceField(label='集群',queryset=models.Device.objects.all())
+    open_source = forms.BooleanField(label="是否开源",widget=forms.CheckboxInput(attrs={'id':'open_source'}))
+    use_fed_model = forms.BooleanField(label="是否使用联邦学习",widget=forms.CheckboxInput(attrs={'id':'use_fed_model'}))

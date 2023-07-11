@@ -378,15 +378,28 @@
                                     {% endif %}
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        {{ task_add_form }}
+                                        {{ task_add_form.dataset.label_tag }}
+                                        {{ task_add_form.dataset}}
                                     </div>
                                     <div class="form-group">
-                                        <label for="privacy">隐私程度（数值越高，越隐私）：</label>
-                                        <input id="privacy" name="privacy" type="range" min="0" max="100" step="1"  />
+                                        {{ task_add_form.cluster.label_tag }}
+                                        {{ task_add_form.cluster}}
                                     </div>
                                     <div class="form-group">
-                                        <label for="time">时间要求：（数值越高，时间越短）</label>
-                                        <input id="time" name="time" type="range" min="0" max="100" step="1"  />
+                                        {{ task_add_form.open_source.label_tag }}
+                                        {{ task_add_form.open_source}}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ task_add_form.use_fed_model.label_tag }}
+                                        {{ task_add_form.use_fed_model}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="safety">安全性：</label>
+                                        <input id="safety" name="safety" type="range" min="0" max="100" step="1"  />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="speed">速度：</label>
+                                        <input id="speed" name="speed" type="range" min="0" max="100" step="1"  />
                                     </div>
                                     <button id="task_add_button" type="submit" class="btn btn-primary">提交</button>
                                 </form>
