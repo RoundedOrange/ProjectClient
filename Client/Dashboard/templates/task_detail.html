@@ -6,16 +6,15 @@
     <meta charset="utf-8">
     <meta name="author" content="DataWrangler">
 
-    <title>拥有资产概览</title>
+    <title>任务详情</title>
 
     <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/font.css">
     <link rel="stylesheet" href="../static/css/style.css" id="theme-stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -23,135 +22,134 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">联邦学习主看板</div>
-    </a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">联邦学习主看板</div>
+            </a>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>主页</span></a>
-    </li>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>主页</span></a>
+            </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        资产相关
-    </div>
-
-    <li class="nav-item active">
-        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapsePossession" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>资产管理</span>
-        </a>
-        <div id="collapsePossession" class="collapse" aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item active" href="possession_show">拥有资产概览</a>
-                <a class="collapse-item active" href="dataset_show">数据集管理</a>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                资产相关
             </div>
-        </div>
-    </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="" data-toggle="collapse" data-target="#collapsePossession" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>资产管理</span>
+                </a>
+                <div id="collapsePossession" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item active" href="possession_show">拥有资产概览</a>
+                        <a class="collapse-item active" href="dataset_show">数据集管理</a>
+                    </div>
+                </div>
+            </li>
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        管理员相关
-    </div>
-    
-    <li class="nav-item active">
-        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>后台管理</span>
-        </a>
-        <div id="collapseAdmin" class="collapse" aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item active" href="user_show">用户权限管理</a>
-                <a class="collapse-item active" href="">运维监控</a>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                管理员相关
             </div>
-        </div>
-    </li>
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>后台管理</span>
+                </a>
+                <div id="collapseAdmin" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item active" href="user_show">用户权限管理</a>
+                        <a class="collapse-item active" href="">运维监控</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                任务相关
+            </div>
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        任务相关
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
-        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseTask" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>任务管理</span>
-        </a>
-        <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item active" href="task_show">任务概览</a>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseTask" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>任务管理</span>
+                </a>
+                <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item active" href="task_show">任务概览</a>
                         <a class="collapse-item active" href="task_add">任务发布</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="sidebar-heading">
+                可信环境管理
             </div>
-        </div>
-    </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-    <div class="sidebar-heading">
-        可信环境管理
-    </div>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>区块链感知监控</span></a>
+            </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>区块链感知监控</span></a>
-    </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                充值相关
+            </div>
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        充值相关
-    </div>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>充值</span></a>
+            </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>充值</span></a>
-    </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>个人账单明细</span></a>
+            </li>
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>个人账单明细</span></a>
-    </li>
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
-</ul>
-<!-- End of Sidebar -->
+        </ul>
+        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -363,87 +361,73 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <form method="post"  method="post" class="form-validate" id="tableForm">
-                        <div class="d-sm-flex   mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
-                            <button type="button" class="btn btn-success" onclick="window.location.href='/possession_add?target_id=0'">增加资产</button>&emsp;
-                            <button type="button" class="btn btn-primary" onclick="
-                            {
-                                var obj = document.getElementsByName('checkbox');
-                                var checkList = [];
-                                for(k in obj)
-                                {
-                                    if(obj[k].checked)
-                                        checkList.push(obj[k].value);
-                                }
-                                alert('即将对ID为'+checkList[0]+'的设备进行修改');
-                                window.location.href=('/possession_add?target_id='+checkList[0]);
-                            }">修改资产信息</button>&emsp;
-                            <button type="submit" class="btn btn-danger" formaction="/possession_delete">删除资产</button>
-                        </div>
-                        {% if message %}
-                            <div class="alert alert-warning">{{ message }}</div>
-                        {% endif %}
-                        {% csrf_token %}
-                        <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">资产列表</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        选择
-                                                    </th>
-                                                    <th>设备ID</th>
-                                                    <th>OS</th>
-                                                    <th>CPU</th>
-                                                    <th>状态</th>
-                                                    <th>RAM</th>
-                                                    <th>ROM</th>
-                                                    <th>IP</th>
-                                                    <th>是否能用CUDA</th>
-                                                    <th>描述</th>
-                                                    <th>核心数</th>
-                                                    <th>最大带宽</th>
-                                                    <th>是否为服务器</th>
-                                                    <th>GPU数</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for device in devices%}
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"  name="checkbox" value={{device.device_id}}>
-                                                          </div>
-                                                        </td>
-                                                        <td>{{ device.device_id }}</td>
-                                                        <td>{{ device.OS }}</td>
-                                                        <td>{{ device.CPU}}</td>
-                                                        <td>{{ device.status}}</td>
-                                                        <td>{{ device.RAM}}</td>
-                                                        <td>{{ device.ROM}}</td>
-                                                        <td>{{ device.IP}}</td>
-                                                        <td>{{ device.can_run_cuda}}</td>
-                                                        <td>{{ device.description}}</td>
-                                                        <td>{{ device.core_num}}</td>
-                                                        <td>{{ device.max_bandwidth}}</td>
-                                                        <td>{{ device.is_server}}</td>
-                                                        <td>{{ device.GPU_num}}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table> 
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">任务详情</h1>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='task_show'">返回</button>
+                    </div>
 
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            {% if message %}
+                                    <div class="alert alert-warning">{{ message }}</div>
+                            {% else %}
+                            123456
+                            {% endif %}
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">任务id</th>
+                                        <td>{{ task.task_id}}</td>
+                                      </tr>
+                                    <tr>
+                                      <th scope="row">开始时间</th>
+                                      <td>{{ task.start_time }}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">结束时间</th>
+                                      <td>{{ task.end_time }}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">准确率</th>
+                                      <td colspan="2">{{ task.accuracy }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">采用数据集id</th>
+                                        <td colspan="2">{{ task.dataset}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">采用集群</th>
+                                        <td colspan="2">{{ task.cluster_id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">发布者</th>
+                                        <td colspan="2">{{ task.publisher }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">状态</th>
+                                        <td colspan="2">{{ task.status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">安全性</th>
+                                        <td colspan="2">{{ task.safety }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">速度</th>
+                                        <td colspan="2">{{ task.speed}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">是否开放</th>
+                                        <td colspan="2">{{ task.open_source }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">是否使用联邦学习</th>
+                                        <td colspan="2">{{ task.use_fed_model }}</td>
+                                    </tr>
+                                  </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -502,12 +486,5 @@
     <!-- Custom scripts for all pages-->
     <script src="../static/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="../static/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../static/js/chart-pie-demo.js"></script>
-    <script src="../static/js/chart-area-demo.js"></script>
 </body>
-
 </html>

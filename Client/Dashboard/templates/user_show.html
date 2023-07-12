@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="author" content="DataWrangler">
 
-    <title>拥有资产概览</title>
+    <title>用户权限管理</title>
 
     <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -365,21 +365,7 @@
                     <!-- Page Heading -->
                     <form method="post"  method="post" class="form-validate" id="tableForm">
                         <div class="d-sm-flex   mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
-                            <button type="button" class="btn btn-success" onclick="window.location.href='/possession_add?target_id=0'">增加资产</button>&emsp;
-                            <button type="button" class="btn btn-primary" onclick="
-                            {
-                                var obj = document.getElementsByName('checkbox');
-                                var checkList = [];
-                                for(k in obj)
-                                {
-                                    if(obj[k].checked)
-                                        checkList.push(obj[k].value);
-                                }
-                                alert('即将对ID为'+checkList[0]+'的设备进行修改');
-                                window.location.href=('/possession_add?target_id='+checkList[0]);
-                            }">修改资产信息</button>&emsp;
-                            <button type="submit" class="btn btn-danger" formaction="/possession_delete">删除资产</button>
+                            <h1 class="h3 mb-0 text-gray-800">用户权限管理</h1>&emsp;
                         </div>
                         {% if message %}
                             <div class="alert alert-warning">{{ message }}</div>
@@ -388,7 +374,7 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">资产列表</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">用户列表</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -398,42 +384,42 @@
                                                     <th>
                                                         选择
                                                     </th>
-                                                    <th>设备ID</th>
-                                                    <th>OS</th>
-                                                    <th>CPU</th>
-                                                    <th>状态</th>
-                                                    <th>RAM</th>
-                                                    <th>ROM</th>
-                                                    <th>IP</th>
-                                                    <th>是否能用CUDA</th>
-                                                    <th>描述</th>
-                                                    <th>核心数</th>
-                                                    <th>最大带宽</th>
-                                                    <th>是否为服务器</th>
-                                                    <th>GPU数</th>
+                                                    <th>用户ID</th>
+                                                    <th>用户名</th>
+                                                    <th>电话</th>
+                                                    <th>生日</th>
+                                                    <th>是否为管理员</th>
+                                                    <th>注册时间</th>
+                                                    <th>签名</th>
+                                                    <th>头像</th>
+                                                    <th>邮箱</th>
+                                                    <th>性别</th>
+                                                    <th>余额</th>
+                                                    <th>真实姓名</th>
+                                                    <th>操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {% for device in devices%}
+                                                {% for user in users %}
                                                     <tr>
                                                         <td>
                                                             <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"  name="checkbox" value={{device.device_id}}>
+                                                            <input class="form-check-input" type="checkbox"  name="checkbox" value={{task.task_id}}>
                                                           </div>
                                                         </td>
-                                                        <td>{{ device.device_id }}</td>
-                                                        <td>{{ device.OS }}</td>
-                                                        <td>{{ device.CPU}}</td>
-                                                        <td>{{ device.status}}</td>
-                                                        <td>{{ device.RAM}}</td>
-                                                        <td>{{ device.ROM}}</td>
-                                                        <td>{{ device.IP}}</td>
-                                                        <td>{{ device.can_run_cuda}}</td>
-                                                        <td>{{ device.description}}</td>
-                                                        <td>{{ device.core_num}}</td>
-                                                        <td>{{ device.max_bandwidth}}</td>
-                                                        <td>{{ device.is_server}}</td>
-                                                        <td>{{ device.GPU_num}}</td>
+                                                        <td>{{ user.user_id }}</td>
+                                                        <td>{{ user.nickname }}</td>
+                                                        <td>{{ user.telephone }}</td>
+                                                        <td>{% if not user.birth_date is None %}{{ user.birth_date }}{% else %}无{% endif %}</td>
+                                                        <td>{% if user.is_administrator is True %}是{% else %}否{% endif %}</td>
+                                                        <td>{{ user.register_time }}</td>
+                                                        <td>{{ user.signature }}</td>
+                                                        <td>{{ user.avatar }}</td>
+                                                        <td>{% if not user.email is None %}{{ user.email }}{% else %}无{% endif %}</td>
+                                                        <td>{% if user.gender is None %}无{% elif user.gender is True %}男{% else %}女{% endif %}</td>
+                                                        <td>{{ user.balance }}元</td>
+                                                        <td>{{ user.real_name }}</td>
+                                                        <td>{% if user.is_administrator is True %}<button type="button" class="btn btn-danger" >降为普通</button>{% else %}<button type="button" class="btn btn-success" >升为管理</button>{% endif %}</td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>

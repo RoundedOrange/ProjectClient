@@ -313,6 +313,7 @@ def task_add(request):
             task.use_fed_model = use_fed_model
             task.safety = safety
             task.speed = speed
+            task.status = 0
             task.publisher = models.User.objects.get(user_id = request.session.get('user_id'))
             task.save()
             message = "操作成功！"
@@ -334,3 +335,25 @@ def task_delete(request):
         message = "失败！"
         return render(request,'task_show.html',locals())
     return render(request,'task_show.html',locals())
+def user_show(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    try:
+        users = models.User.objects.filter()
+        return render(request,'user_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'user_show.html',locals())
+    return render(request,'user_show.html',locals())
+def task_detail(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    task_id = request.GET.get('task_id')
+    if( task_id is None):
+        message = "找不到对应的任务！"
+        return render(request,'task_detail.html',locals())
+    else:
+        task = models.Task.objects.get(task_id=task_id)
+        return render(request,'task_detail.html',locals())
+    return render(request,'task_detail.html',locals())
