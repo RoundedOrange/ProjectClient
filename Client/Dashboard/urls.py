@@ -16,5 +16,6 @@ urlpatterns = [
     path('task_delete',views.task_delete),
     path('change_info',views.change_info),
     path('user_show',views.user_show),
+    path('user_action',views.user_action),
     path('task_detail',views.task_detail),
 ]

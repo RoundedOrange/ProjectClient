@@ -346,6 +346,32 @@ def user_show(request):
         message = "失败！"
         return render(request,'user_show.html',locals())
     return render(request,'user_show.html',locals())
+def user_action(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    if models.User.objects.get(user_id=request.session.get('user_id',None)).is_administrator:
+        if 'down' in request.POST:
+            print(request.POST.get('down'))
+            temp = models.User.objects.get(user_id=request.POST.get('down'))
+            temp.is_administrator = False
+            temp.save()
+            message = "降权操作成功！"
+        else:
+            print(request.POST.get('up'))
+            temp = models.User.objects.get(user_id=request.POST.get('up'))
+            temp.is_administrator = True
+            temp.save()
+            message = "提权操作成功！"
+    else:
+        message = "你不是管理员，无权进行此操作！"
+    try:
+        users = models.User.objects.filter()
+        return render(request,'user_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'user_show.html',locals())
+    return render(request,'user_show.html',locals())
 def task_detail(request):
     if not request.session.get('is_login',None):
         return redirect('/login')

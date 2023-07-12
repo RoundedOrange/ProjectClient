@@ -359,19 +359,21 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">任务详情</h1>
-                        <button type="button" class="btn btn-primary" onclick="window.location.href='task_show'">返回</button>
-                    </div>
-
-                    <!-- Content Row -->
                     {% if message %}
                         <div class="alert alert-warning">{{ message }}</div>
                     {% else %}
                             123456
                     {% endif %}
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">任务详情&emsp;<button type="button" class="btn btn-primary" onclick="window.open('{{task.log_name}}')">下载日志</button>&emsp;
+                        <button type="button" class="btn btn-primary" onclick="window.open('{{task.parameter_file_name}}')">下载模型文件</button></h1>
+                        
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='task_show'">返回</button>
+                    </div>
+
+                    <!-- Content Row -->
+                    
                     <div class="row">
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="alert alert-primary">任务基本信息</div>

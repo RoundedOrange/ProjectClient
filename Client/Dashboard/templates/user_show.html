@@ -372,6 +372,7 @@
                         {% endif %}
                         {% csrf_token %}
                         <!-- DataTales Example -->
+
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">用户列表</h6>
@@ -381,9 +382,6 @@
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th>
-                                                        选择
-                                                    </th>
                                                     <th>用户ID</th>
                                                     <th>用户名</th>
                                                     <th>电话</th>
@@ -399,14 +397,10 @@
                                                     <th>操作</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <form action="" method="post" class="form-validate">
+                                                <tbody>
                                                 {% for user in users %}
                                                     <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"  name="checkbox" value={{task.task_id}}>
-                                                          </div>
-                                                        </td>
                                                         <td>{{ user.user_id }}</td>
                                                         <td>{{ user.nickname }}</td>
                                                         <td>{{ user.telephone }}</td>
@@ -419,10 +413,12 @@
                                                         <td>{% if user.gender is None %}无{% elif user.gender is True %}男{% else %}女{% endif %}</td>
                                                         <td>{{ user.balance }}元</td>
                                                         <td>{{ user.real_name }}</td>
-                                                        <td>{% if user.is_administrator is True %}<button type="button" class="btn btn-danger" >降为普通</button>{% else %}<button type="button" class="btn btn-success" >升为管理</button>{% endif %}</td>
+                                                        <td>{% if user.is_administrator is True %}<button type="submit" class="btn btn-danger" formaction="/user_action" name="down" value="{{user.user_id}}">降为普通</button>{% else %}<button type="submit" class="btn btn-success" formaction="/user_action" name="up" value="{{user.user_id}}">升为管理</button>{% endif %}</td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>
+                                            </form>
+                                            
                                         </table> 
                                 </div>
                             </div>
