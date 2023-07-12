@@ -14,7 +14,7 @@
     <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/font.css">
     <link rel="stylesheet" href="../static/css/style.css" id="theme-stylesheet">
-
+    <script src="../static/js/echarts.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -367,13 +367,14 @@
                     </div>
 
                     <!-- Content Row -->
+                    {% if message %}
+                        <div class="alert alert-warning">{{ message }}</div>
+                    {% else %}
+                            123456
+                    {% endif %}
                     <div class="row">
                         <div class="col-xl-3 col-md-6 mb-4">
-                            {% if message %}
-                                    <div class="alert alert-warning">{{ message }}</div>
-                            {% else %}
-                            123456
-                            {% endif %}
+                            <div class="alert alert-primary">任务基本信息</div>
                             <table class="table">
                                 <tbody>
                                     <tr>
@@ -426,6 +427,10 @@
                                     </tr>
                                   </tbody>
                             </table>
+                        </div>
+                        <div class="col-xl-6 col-md-6 mb-6">
+                            <div class="alert alert-primary">正确率图像</div>
+                            <div id="graph_accuracy" style="width: 800px;height:550px;"></div>
                         </div>
                     </div>
 
@@ -486,5 +491,32 @@
     <!-- Custom scripts for all pages-->
     <script src="../static/js/sb-admin-2.min.js"></script>
 
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('graph_accuracy'));
+  
+        // 指定图表的配置项和数据
+        var option = {
+  xAxis: {
+    type: 'category',
+    name: 'epoch数',
+    data: [1,2,3,4,5]
+  },
+  yAxis: {
+    type: 'value',
+    name: '准确率',
+  },
+  series: [
+    {
+      data: [20, 45, 60, 77, 90],
+      type: 'line',
+      smooth: true
+    }
+  ]
+};
+  
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+      </script>
 </body>
 </html>
