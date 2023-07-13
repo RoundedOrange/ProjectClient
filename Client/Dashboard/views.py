@@ -277,25 +277,6 @@ def dataset_delete(request):
         message = "失败！"
         return render(request,'dataset_show.html',locals())
     return render(request,'dataset_show.html',locals())
-def download(key='20230705152040.pdf', type="pdf"):
-    # 域名
-    bucket_domain = 'rxb2qos8d.hb-bkt.clouddn.com'
-    # 构造base_url
-    base_url = 'http://%s/%s' % (bucket_domain, key)
-    # 可以设置token过期时间
-    private_url = q.private_download_url(base_url, expires=3600)
-    print(private_url)
-    r = requests.get(private_url)
-    if type == "pdf":
-        file_path = "./pdf/download_" + key
-    else:
-        file_path = "./pmodel/download_" + key
-    assert r.status_code == 200
-
-    file = open(file_path, "wb")
-    file.write(r.content)
-    file.flush()
-    file.close()
 def task_show(request):
     if not request.session.get('is_login',None):
         return redirect('/login')

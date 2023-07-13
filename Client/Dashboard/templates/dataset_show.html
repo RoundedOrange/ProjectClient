@@ -321,8 +321,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.nickname}}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../static/img/undraw_profile.svg">
+                                <i class="fas fa-angle-double-down" ></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in bg-dark"
@@ -413,8 +412,8 @@
                                                         <td>{{ dataset.description }}</td>
                                                         <td>{{ dataset.dataset_name }}</td>
                                                         <td>{{ dataset.data_num }}</td>
-                                                        <td>{{ dataset.is_graph }}</td>
-                                                        <td>{{ dataset.graph_size }}</td>
+                                                        <td>{% if dataset.is_graph is True %}是{%else%}否{% endif %}</td>
+                                                        <td>{% if dataset.graph_size is None %}无{% else %}{{ dataset.graph_size }}{% endif %}</td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>

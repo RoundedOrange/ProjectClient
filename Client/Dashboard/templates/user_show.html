@@ -321,8 +321,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.nickname}}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../static/img/undraw_profile.svg">
+                                <i class="fas fa-angle-double-down" ></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in bg-dark"
@@ -382,7 +381,6 @@
                                                     <th>是否为管理员</th>
                                                     <th>注册时间</th>
                                                     <th>签名</th>
-                                                    <th>头像</th>
                                                     <th>邮箱</th>
                                                     <th>性别</th>
                                                     <th>余额</th>
@@ -401,7 +399,6 @@
                                                         <td>{% if user.is_administrator is True %}是{% else %}否{% endif %}</td>
                                                         <td>{{ user.register_time }}</td>
                                                         <td>{{ user.signature }}</td>
-                                                        <td>{{ user.avatar }}</td>
                                                         <td>{% if not user.email is None %}{{ user.email }}{% else %}无{% endif %}</td>
                                                         <td>{% if user.gender is None %}无{% elif user.gender is True %}男{% else %}女{% endif %}</td>
                                                         <td>{{ user.balance }}元</td>

@@ -25,7 +25,6 @@ class ChangeInfoForm(forms.Form):
     signature = forms.CharField(label="签名",required=False,max_length=256,widget=forms.Textarea(attrs={'class':'input-material','placeholder':'请填写签名'}))
     gender = forms.ChoiceField(choices=((True,'男'),(False,'女')), widget=forms.RadioSelect,required=False)
     real_name = forms.CharField(label="真实姓名",required=False,max_length=10,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入真实姓名'}))
-    avatar = forms.ImageField(label="上传头像",required=False)
 
 class DatasetAddForm(forms.Form):
     total_size = forms.CharField(label="总大小",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入总大小'}))

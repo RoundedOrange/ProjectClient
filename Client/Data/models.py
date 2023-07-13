@@ -74,6 +74,7 @@ class Task(models.Model):
     cluster = models.ForeignKey('Device',on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
     safety = models.IntegerField(null=True)
+    speed = models.IntegerField(default=50)
     open_source = models.BooleanField(default=False)
     use_fed_model = models.BooleanField(null=True)
     log_name = models.CharField(max_length=256,null=True)

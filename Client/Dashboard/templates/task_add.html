@@ -320,8 +320,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.nickname}}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../static/img/undraw_profile.svg">
+                                <i class="fas fa-angle-double-down" ></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in bg-dark"
@@ -357,6 +356,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">添加任务</h1>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='task_show'">返回</button>
                     </div>
 
                     <!-- Content Row -->
@@ -387,12 +387,12 @@
                                         {{ task_add_form.use_fed_model}}
                                     </div>
                                     <div class="form-group">
-                                        <label for="safety">安全性：</label>
+                                        <label for="safety">安全性（数值越高越安全）：</label>
                                         <input id="safety" name="safety" type="range" min="0" max="100" step="1"  onchange="document.getElementById('safety_value').innerHTML=value" />
                                         <span id="safety_value"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label for="speed">速度：</label>
+                                        <label for="speed">速度（数值越高越快）：</label>
                                         <input id="speed" name="speed" type="range" min="0" max="100" step="1"  onchange="document.getElementById('speed_value').innerHTML=value" />
                                         <span id="speed_value"></span>
                                     </div>

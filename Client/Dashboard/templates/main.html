@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../static/css/style.css" id="theme-stylesheet">
     <script src="../static/js/echarts.min.js"></script>
     <style>
-        span,td,th{
+        span,td,th,h4{
        color:white;
         }
     </style>
@@ -322,8 +322,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.nickname}}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../static/img/undraw_profile.svg">
+                                <i class="fas fa-angle-double-down" ></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in bg-dark"
@@ -361,17 +360,17 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6">
-                            <div class="card border-left-primary shadow h-60 py-1 bg-dark">
+                            <div class="card border-left-primary shadow h-30 py-1 bg-dark">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                账户余额 ￥ 50.02</div>
+                                                当前时间（GMT+8）</div>
                                                 <br>
-                                            <div class="h5 mb-0  text-gray-800">自从上周以来 <i class="far fa-arrow-alt-circle-up" ></i> 20.5%</div>
+                                            <div class="h5 mb-0  text-gray-800" id="time"></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-yen-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -380,12 +379,12 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-60 py-1 bg-dark">
+                            <div class="card border-left-success shadow h-30 py-1 bg-dark">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                客户端余量</div>
+                                                客户端统计</div>
                                                 <br>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">12台</div>
                                         </div>
@@ -399,21 +398,21 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-60 py-1 bg-dark">
+                            <div class="card border-left-info shadow h-30 py-1 bg-dark">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">总任务总览
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">已完成任务占比
                                             </div>
                                             <br>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">100%</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
                                                         <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            style="width: 100%" aria-valuenow="100" aria-valuemin="0"
                                                             aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
@@ -429,14 +428,14 @@
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-60 py-1 bg-dark">
+                            <div class="card border-left-warning shadow h-30 py-1 bg-dark">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 总发起任务</div>
                                                 <br>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">135个</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">15个</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -452,62 +451,50 @@
                     <div class="row">
 
                         <div class="col-xl-4 col-lg-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">最近任务提交数量</h6>
-                            </div>
-                            <div class="card shadow mb-4">
+                            <h4 style="text-align: center;">最近任务提交数量</h4>
                                 <div id="graph1" style="width: 500px;height:400px;"></div>
-                            </div>
                         </div>
                         <div class="col-xl-4 col-lg-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">各系统占比</h6>
-                            </div>
-                            <div class="card shadow mb-4">
+                            <h4 style="text-align: center;">各系统占比</h4>
                                 <div id="graph2" style="width: 500px;height:400px;"></div>
-                            </div>
                         </div>
                         <!-- Content Column -->
                         <div class="col-lg-4 mb-4">
-
+                            <h4 style="text-align: center;">最近任务时长</h4>
                             <!-- Project Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">最近任务时长</h6>
-                                </div>
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">任务1 <span
-                                            class="float-right">250s</span></h4>
+                                    <h4 class="small font-weight-bold">任务11 <span
+                                            class="float-right">251s</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 62%"
                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">任务2 <span
-                                            class="float-right">200s</span></h4>
+                                    <h4 class="small font-weight-bold">任务12 <span
+                                            class="float-right">371s</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"
                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">任务3 <span
-                                            class="float-right">150s</span></h4>
+                                    <h4 class="small font-weight-bold">任务13 <span
+                                            class="float-right">443s</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
+                                        <div class="progress-bar" role="progressbar" style="width: 100%"
                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">任务4 <span
-                                            class="float-right">100s</span></h4>
+                                    <h4 class="small font-weight-bold">任务14 <span
+                                        class="float-right">152s</span></h4>
+                                <div class="progress mb-4">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 37%"
+                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                    <h4 class="small font-weight-bold">任务15 <span
+                                            class="float-right">172s</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 40%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">任务5 <span
-                                            class="float-right">50s</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 20%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                    
                                 </div>
-                            </div>
                     </div>
 
                     
@@ -516,15 +503,6 @@
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-dark">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span >Copyright &copy; DataWrangler</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
@@ -579,18 +557,35 @@ var option = {
   xAxis: {
     type: 'category',
     name:'日期',
-    data: ['7.8', '7.9', '7.10', '7.11', '7.12']
+    data: ['7.9', '7.10', '7.11', '7.12','7.13','7.14','7.15'],
+    axisLine:{
+        lineStyle:{
+            color:'#fff',
+        }
+    },
+    axisLabel:{
+        color:"#fff",
+    }
   },
   yAxis: {
     type: 'value',
     name: '总任务数',
+    axisLine:{
+        lineStyle:{
+            color:'#fff',
+        }
+    },
+    axisLabel:{
+        color:"#fff",
+    }
   },
   series: [
     {
-      data: [30,110,16,57,26],
+      data: [3,11,16,5,18,24,15],
       type: 'line'
     }
-  ]
+  ],
+  
 };
 
 // 使用刚指定的配置项和数据显示图表。
@@ -606,7 +601,10 @@ var option = {
   },
   legend: {
     top: '5%',
-    left: 'center'
+    left: 'center',
+    textStyle: {
+        color: '#fff',
+    }
   },
   series: [
     {
@@ -634,10 +632,10 @@ var option = {
         show: false
       },
       data: [
-        { value: 1048, name: 'Windows' },
-        { value: 735, name: 'Linux' },
-        { value: 580, name: 'iOS' },
-        { value: 484, name: 'MacOS' },
+        { value: 5, name: 'Windows' },
+        { value: 3, name: 'Linux' },
+        { value: 2, name: 'iOS' },
+        { value: 1, name: 'MacOS' },
       ]
     }
   ]
@@ -645,6 +643,19 @@ var option = {
 
 // 使用刚指定的配置项和数据显示图表。
 myChart.setOption(option);
+    </script>
+     <script>
+        function showdata(){
+            var now=new Date()
+            var hour=now.getHours()
+            var minute=now.getMinutes()
+            var second=now.getSeconds()
+            return `2023年7月14日 ${hour}:${minute}:${second}`
+        }
+        setInterval(() => {
+           var d=showdata()
+           document.getElementById('time').innerHTML=d
+        }, 1000);
     </script>
 </body>
 
