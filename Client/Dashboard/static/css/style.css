@@ -1886,10 +1886,9 @@ body {
     height: 100%;
     display: block;
     z-index: -1;
-    background: url(../img/p_big3.jpg);
+    background: url(../img/night.gif);
     background-size: cover;
-    -webkit-filter: blur(10px);
-    filter: blur(10px);
+    
     z-index: 1;
     position: absolute;
     top: 0;
@@ -1921,7 +1920,7 @@ body {
   }
   
   .login-page .form-holder .info {
-    background: rgba(121, 106, 238, 0.9);
+    background: rgba(34, 46, 64, 0.9);
     color: #fff;
   }
   
