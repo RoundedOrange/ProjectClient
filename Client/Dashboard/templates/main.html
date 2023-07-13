@@ -16,7 +16,7 @@
     <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/font.css">
     <link rel="stylesheet" href="../static/css/style.css" id="theme-stylesheet">
-
+    <script src="../static/js/echarts.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -50,32 +50,6 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                个人账号
-            </div>
-
-            <li class="nav-item">
-                <a class="nav-link" href="personal_info">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>个人信息总览</span></a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="change_info">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>更改账号信息</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="change_password">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>修改密码</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
                 资产相关
             </div>
 
@@ -93,7 +67,7 @@
                     </div>
                 </div>
             </li>
-
+            {% if user.is_administrator %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -111,12 +85,12 @@
                 <div id="collapseAdmin" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="">用户权限管理</a>
+                        <a class="collapse-item active" href="user_show">用户权限管理</a>
                         <a class="collapse-item active" href="">运维监控</a>
                     </div>
                 </div>
             </li>
-
+            {% endif %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -135,9 +109,8 @@
                 <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="">任务发布</a>
-                        <a class="collapse-item active" href="task_show">任务进度</a>
-                        <a class="collapse-item active" href="">任务结果</a>
+                        <a class="collapse-item active" href="task_show">任务概览</a>
+                        <a class="collapse-item active" href="task_add">任务发布</a>
                     </div>
                 </div>
             </li>
@@ -362,6 +335,19 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/personal_info">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    个人信息总览
+                                </a>
+                                <a class="dropdown-item" href="/change_info">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    更改账号信息
+                                </a>
+                                <a class="dropdown-item" href="/change_password">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    修改密码
+                                </a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
@@ -377,24 +363,19 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">总览</h1>
-                    </div>
-
                     <!-- Content Row -->
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card border-left-primary shadow h-60 py-1">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                账户余额</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">￥ 50,000.02</div>
-                                            <div class="p mb-0  text-gray-800">自从上周以来 <i class="fas fa-calendar fa-x text-gray-300"></i> 20.5%</div>
+                                                账户余额 ￥ 50,000.02</div>
+                                                <br>
+                                            <div class="h5 mb-0  text-gray-800">自从上周以来 <i class="fas fa-calendar fa-x text-gray-300"></i> 20.5%</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -406,7 +387,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-success shadow h-60 py-1">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -425,12 +406,13 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card border-left-info shadow h-60 py-1">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">总任务进度
                                             </div>
+                                            <br>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
@@ -454,12 +436,13 @@
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card border-left-warning shadow h-60 py-1">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 总发起任务</div>
+                                                <br>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">135个</div>
                                         </div>
                                         <div class="col-auto">
@@ -475,84 +458,12 @@
 
                     <div class="row">
 
-                        <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">统计数据</h6>
-                                    <p class="m-0 text-primary">2021-09-01</p>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">选项</div>
-                                            <a class="dropdown-item" href="#">保存</a>
-                                            <a class="dropdown-item" href="#">刷新</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">等等等等</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-xl-4 col-lg-4">
+                            <div id="graph1" style="width: 600px;height:400px;"></div>
                         </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">资源百分比</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">选项</div>
-                                            <a class="dropdown-item" href="#">保存</a>
-                                            <a class="dropdown-item" href="#">刷新</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">等等等等</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> 台式机
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> 笔记本
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> 手机
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-xl-4 col-lg-4">
+                            <div id="graph2" style="width: 600px;height:400px;"></div>
                         </div>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
                         <!-- Content Column -->
                         <div class="col-lg-4 mb-4">
 
@@ -594,60 +505,9 @@
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="col-lg-4 mb-4">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">近几次任务准确率</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> 台式机
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> 笔记本
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> 手机
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mb-4">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">近几次任务日志</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> 台式机
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> 笔记本
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> 手机
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                </div>
+                    
                 <!-- /.container-fluid -->
 
             </div>
@@ -708,8 +568,81 @@
     <script src="../static/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../static/js/chart-pie-demo.js"></script>
-    <script src="../static/js/chart-area-demo.js"></script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('graph1'));
+
+// 指定图表的配置项和数据
+var option = {
+  xAxis: {
+    type: 'category',
+    name:'日期',
+    data: ['7.8', '7.9', '7.10', '7.11', '7.12']
+  },
+  yAxis: {
+    type: 'value',
+    name: '总任务数',
+  },
+  series: [
+    {
+      data: [30,110,16,57,26],
+      type: 'line'
+    }
+  ]
+};
+
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+    </script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('graph2'));
+
+// 指定图表的配置项和数据
+var option = {
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center'
+  },
+  series: [
+    {
+      name: '各系统占比',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: 40,
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: 1048, name: 'Windows' },
+        { value: 735, name: 'Linux' },
+        { value: 580, name: 'iOS' },
+        { value: 484, name: 'MacOS' },
+      ]
+    }
+  ]
+};
+
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+    </script>
 </body>
 
 </html>

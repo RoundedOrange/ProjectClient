@@ -49,32 +49,6 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        个人账号
-    </div>
-
-    <li class="nav-item">
-        <a class="nav-link" href="personal_info">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>个人信息总览</span></a>
-    </li>
-    
-    <li class="nav-item">
-        <a class="nav-link" href="change_info">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>更改账号信息</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="change_password">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>修改密码</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
         资产相关
     </div>
 
@@ -92,7 +66,7 @@
             </div>
         </div>
     </li>
-
+    {% if user.is_administrator %}
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -110,12 +84,12 @@
         <div id="collapseAdmin" class="collapse" aria-labelledby="headingTwo"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item active" href="">用户权限管理</a>
+                <a class="collapse-item active" href="user_show">用户权限管理</a>
                 <a class="collapse-item active" href="">运维监控</a>
             </div>
         </div>
     </li>
-
+    {% endif %}
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -134,9 +108,8 @@
         <div id="collapseTask" class="collapse" aria-labelledby="headingTwo"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item active" href="">任务发布</a>
-                <a class="collapse-item active" href="task_show">任务进度</a>
-                <a class="collapse-item active" href="">任务结果</a>
+                <a class="collapse-item active" href="task_show">任务概览</a>
+                <a class="collapse-item active" href="task_add">任务发布</a>
             </div>
         </div>
     </li>
@@ -361,6 +334,19 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/personal_info">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    个人信息总览
+                                </a>
+                                <a class="dropdown-item" href="/change_info">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    更改账号信息
+                                </a>
+                                <a class="dropdown-item" href="/change_password">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    修改密码
+                                </a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
@@ -507,9 +493,6 @@
     <!-- Page level plugins -->
     <script src="../static/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="../static/js/chart-pie-demo.js"></script>
-    <script src="../static/js/chart-area-demo.js"></script>
 </body>
 
 </html>

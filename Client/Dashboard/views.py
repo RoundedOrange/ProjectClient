@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.utils import timezone
 from Dashboard import forms
 from Data import models
 import hashlib
@@ -78,6 +79,7 @@ def change_info(request):
             if(new_real_name != ""):
                 user.real_name = new_real_name
                 user.save()
+            
             return render(request,'change_info.html',locals())
     message = "只需修改想修改的字段，其余留空。"
     change_info_form = forms.ChangeInfoForm()
@@ -98,12 +100,12 @@ def possession_add(request):
         return redirect('/login')
     user = models.User.objects.get(user_id=request.session.get('user_id',None))
     target_id = request.GET.get('target_id')
-    if target_id == None or int(target_id) != 0:
+    if not target_id is None and int(target_id) != 0:
         if request.method == 'POST':
             possession_add_form = forms.PossessionAddForm(request.POST)
             message = "请检查填写的内容！"
             if possession_add_form.is_valid():
-                device = models.Device()
+                device = models.Device.objects.get(device_id=target_id)
                 OS = possession_add_form.cleaned_data.get('OS')
                 CPU = possession_add_form.cleaned_data.get('CPU')
                 RAM = possession_add_form.cleaned_data.get('RAM')
@@ -127,7 +129,6 @@ def possession_add(request):
                 device.IP = '0.0.0.0'
                 device.save()
                 message = "操作成功！"
-                return render(request,'possession_add.html',locals())
         possession = models.Device.objects.get(device_id=int(target_id))
         possession_add_form = forms.PossessionAddForm({
                         "OS": possession.OS,
@@ -208,12 +209,11 @@ def dataset_add(request):
         return redirect('/login')
     user = models.User.objects.get(user_id=request.session.get('user_id',None))
     target_id = request.GET.get('target_id')
-    if target_id == None or int(target_id) != 0:
+    if not target_id is None and int(target_id) != 0:
         if request.method == 'POST':
             dataset_add_form = forms.DatasetAddForm(request.POST)
-            message = "请检查填写的内容！"
             if dataset_add_form.is_valid():
-                dataset = models.Dataset()
+                dataset = models.Dataset.objects.get(dataset_id=int(target_id))
                 total_size = dataset_add_form.cleaned_data.get('total_size')
                 description = dataset_add_form.cleaned_data.get('description')
                 dataset_name = dataset_add_form.cleaned_data.get('dataset_name')
@@ -228,7 +228,6 @@ def dataset_add(request):
                 dataset.graph_size = graph_size
                 dataset.save()
                 message = "操作成功！"
-                return render(request,'dataset_add.html',locals())
         dataset = models.Dataset.objects.get(dataset_id=int(target_id))
         dataset_add_form = forms.DatasetAddForm({
                         "total_size": dataset.total_size,
@@ -289,3 +288,96 @@ def task_show(request):
         message = "失败！"
         return render(request,'task_show.html',locals())
     return render(request,'task_show.html',locals())
+def task_add(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    if request.method == 'POST':
+        task_add_form = forms.TaskAddForm(request.POST)
+        message = "请检查填写的内容！"
+        if task_add_form.is_valid():
+            task = models.Task()
+            start_time = timezone.now()
+            dataset = task_add_form.cleaned_data.get('dataset')
+            cluster = task_add_form.cleaned_data.get('cluster')
+            open_source = task_add_form.cleaned_data.get('open_source')
+            use_fed_model = task_add_form.cleaned_data.get('use_fed_model')
+            safety = request.POST.get('safety',None)
+            speed = request.POST.get('speed',None)
+            task.start_time = start_time
+            task.dataset = dataset
+            task.cluster = cluster
+            task.open_source = open_source
+            task.use_fed_model = use_fed_model
+            task.safety = safety
+            task.speed = speed
+            task.status = 0
+            task.publisher = models.User.objects.get(user_id = request.session.get('user_id'))
+            task.save()
+            message = "操作成功！"
+            return render(request,'task_add.html',locals())
+    task_add_form = forms.TaskAddForm()
+    return render(request,'task_add.html',locals())
+def task_delete(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    array = request.POST.getlist('checkbox')
+    for id in array:
+        models.Task.objects.get(task_id=id).delete()
+    message = "删除成功！"
+    try:
+        tasks = models.Task.objects.filter()
+        return render(request,'task_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'task_show.html',locals())
+    return render(request,'task_show.html',locals())
+def user_show(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    try:
+        users = models.User.objects.filter()
+        return render(request,'user_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'user_show.html',locals())
+    return render(request,'user_show.html',locals())
+def user_action(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    user = models.User.objects.get(user_id=request.session.get('user_id',None))
+    if models.User.objects.get(user_id=request.session.get('user_id',None)).is_administrator:
+        if 'down' in request.POST:
+            print(request.POST.get('down'))
+            temp = models.User.objects.get(user_id=request.POST.get('down'))
+            temp.is_administrator = False
+            temp.save()
+            message = "降权操作成功！"
+        else:
+            print(request.POST.get('up'))
+            temp = models.User.objects.get(user_id=request.POST.get('up'))
+            temp.is_administrator = True
+            temp.save()
+            message = "提权操作成功！"
+    else:
+        message = "你不是管理员，无权进行此操作！"
+    try:
+        users = models.User.objects.filter()
+        return render(request,'user_show.html',locals())
+    except:
+        message = "失败！"
+        return render(request,'user_show.html',locals())
+    return render(request,'user_show.html',locals())
+def task_detail(request):
+    if not request.session.get('is_login',None):
+        return redirect('/login')
+    task_id = request.GET.get('task_id')
+    if( task_id is None):
+        message = "找不到对应的任务！"
+        return render(request,'task_detail.html',locals())
+    else:
+        task = models.Task.objects.get(task_id=task_id)
+        return render(request,'task_detail.html',locals())
+    return render(request,'task_detail.html',locals())
