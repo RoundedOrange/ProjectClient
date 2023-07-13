@@ -373,7 +373,7 @@
                             <div class="alert alert-primary">请填写资产详情</div>
                             <div class="form d-flex align-items-center">
                                 <div class="content">
-                                    <form method="post" action="possession_add" class="form-validate" id="loginFrom">
+                                    <form method="post" action="possession_add?target_id={{target_id}}" class="form-validate" id="loginFrom">
                                     {% if message %}
                                         <div class="alert alert-warning">{{ message }}</div>
                                     {% endif %}

@@ -100,12 +100,12 @@ def possession_add(request):
         return redirect('/login')
     user = models.User.objects.get(user_id=request.session.get('user_id',None))
     target_id = request.GET.get('target_id')
-    if target_id == None or int(target_id) != 0:
+    if not target_id is None and int(target_id) != 0:
         if request.method == 'POST':
             possession_add_form = forms.PossessionAddForm(request.POST)
             message = "请检查填写的内容！"
             if possession_add_form.is_valid():
-                device = models.Device()
+                device = models.Device.objects.get(device_id=target_id)
                 OS = possession_add_form.cleaned_data.get('OS')
                 CPU = possession_add_form.cleaned_data.get('CPU')
                 RAM = possession_add_form.cleaned_data.get('RAM')
@@ -129,7 +129,6 @@ def possession_add(request):
                 device.IP = '0.0.0.0'
                 device.save()
                 message = "操作成功！"
-                return render(request,'possession_add.html',locals())
         possession = models.Device.objects.get(device_id=int(target_id))
         possession_add_form = forms.PossessionAddForm({
                         "OS": possession.OS,
