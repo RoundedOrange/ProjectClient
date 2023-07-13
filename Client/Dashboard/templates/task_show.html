@@ -414,7 +414,7 @@
                                                         <td>{{ task.speed }}</td>
                                                         <td>{{ task.open_source }}</td>
                                                         <td>{{ task.use_fed_model }}</td>
-                                                        <td><button type="button" class="btn btn-info" onclick="window.location.href='task_detail?task_id='+'{{task.task_id}}'">详情</a></button>&emsp;<button type="button" class="btn btn-primary" onclick="window.open('{{task.log_name}}')">下载日志</a></button>&emsp;<button type="button" class="btn btn-primary" onclick="window.open('{{task.parameter_file_name}}')">下载模型</button></td>
+                                                        <td><button type="button" class="btn btn-info" onclick="window.location.href='task_detail?task_id='+'{{task.task_id}}'">详情</a></button>&emsp;<button type="button" class="btn btn-primary" onclick="window.open('http://rxb2qos8d.hb-bkt.clouddn.com/'+'{{task.log_name}}')">下载日志</a></button>&emsp;<button type="button" class="btn btn-primary" onclick="window.open('http://rxb2qos8d.hb-bkt.clouddn.com/'+'{{task.parameter_file_name}}')">下载模型</button></td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>
