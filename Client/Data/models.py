@@ -24,6 +24,8 @@ class Dataset(models.Model):
     data_num = models.IntegerField(null=True)
     is_graph = models.BooleanField(null=True)
     graph_size = models.IntegerField(null=True)
+    def __str__(self):
+        return self.description
 
 class User_Dataset(models.Model):
     user = models.ForeignKey('User',on_delete=models.CASCADE)
@@ -59,6 +61,8 @@ class Device(models.Model):
     max_bandwidth = models.IntegerField(null=True)
     is_server = models.BooleanField(default=False)
     GPU_num = models.IntegerField(default=0)
+    def __str__(self):
+        return "设备"+str(self.device_id)
 
 class Task(models.Model):
     task_id = models.AutoField(primary_key=True)
