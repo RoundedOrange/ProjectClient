@@ -386,7 +386,7 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 客户端统计</div>
                                                 <br>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">12台</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">11台</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-archive fa-2x text-gray-300"></i>
@@ -450,16 +450,11 @@
 
                     <div class="row">
 
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col-xl-6 col-lg-6">
                             <h4 style="text-align: center;">最近任务提交数量</h4>
-                                <div id="graph1" style="width: 500px;height:400px;"></div>
+                                <div id="graph1" style="width: 800px;height:400px;"></div>
                         </div>
-                        <div class="col-xl-4 col-lg-4">
-                            <h4 style="text-align: center;">各系统占比</h4>
-                                <div id="graph2" style="width: 500px;height:400px;"></div>
-                        </div>
-                        <!-- Content Column -->
-                        <div class="col-lg-4 mb-4">
+                        <div class="col-lg-6 mb-6">
                             <h4 style="text-align: center;">最近任务时长</h4>
                             <!-- Project Card Example -->
                                 <div class="card-body">
@@ -496,18 +491,19 @@
                                     
                                 </div>
                     </div>
-                    
-
-                    
+                        <!-- Content Column -->
                 <!-- /.container-fluid -->
-
-            </div>
+                    </div>
             <!-- End of Main Content -->
             <div class="row">
-                <div class="col-xl-4 col-lg-4">
-                    <h4 style="text-align: center;">CPU利用率</h4>
-                        <div id="graph3" style="width: 500px;height:400px;"></div>
+                <div class="col-xl-6 col-lg-6">
+                    <h4 style="text-align: center;">本机CPU利用率</h4>
+                        <div id="graph3" style="width: 800px;height:400px;"></div>
                 </div>
+                <div class="col-xl-6 col-lg-6">
+                            <h4 style="text-align: center;">各系统占比</h4>
+                                <div id="graph2" style="width: 800px;height:400px;"></div>
+                        </div>
                 
             </div>
 
@@ -564,7 +560,7 @@ var option = {
   xAxis: {
     type: 'category',
     name:'日期',
-    data: ['7.9', '7.10', '7.11', '7.12','7.13','7.14','7.15'],
+    data: ['7.8','7.9', '7.10', '7.11', '7.12','7.13','7.14'],
     axisLine:{
         lineStyle:{
             color:'#fff',
@@ -714,7 +710,7 @@ setInterval(function () {
       {
         data: [
           {
-            value: +((Math.random()*2+6)* 10).toFixed(2)
+            value: +((Math.random()*2)* 10).toFixed(2)
           }
         ]
       }
