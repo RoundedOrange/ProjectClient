@@ -25,9 +25,10 @@ class ChangeInfoForm(forms.Form):
     signature = forms.CharField(label="签名",required=False,max_length=256,widget=forms.Textarea(attrs={'class':'input-material','placeholder':'请填写签名'}))
     gender = forms.ChoiceField(choices=((True,'男'),(False,'女')), widget=forms.RadioSelect,required=False)
     real_name = forms.CharField(label="真实姓名",required=False,max_length=10,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入真实姓名'}))
+    avatar = forms.ImageField(label="上传头像",required=False)
 
 class DatasetAddForm(forms.Form):
-    total_size = forms.IntegerField(label="总大小",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入总大小'}))
+    total_size = forms.CharField(label="总大小",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入总大小'}))
     description = forms.CharField(label="描述",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入数据集描述'}))
     dataset_name = forms.CharField(label="数据集名称",max_length=256,required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入数据集名称'}))
     data_num = forms.IntegerField(label="条目数",required=False,widget=forms.TextInput(attrs={'class':'input-material','placeholder':'请输入数据条目数'}))
@@ -37,5 +38,5 @@ class DatasetAddForm(forms.Form):
 class TaskAddForm(forms.Form):
     dataset = forms.ModelChoiceField(label='数据集',queryset=models.Dataset.objects.all())
     cluster = forms.ModelChoiceField(label='集群',queryset=models.Device.objects.all())
-    open_source = forms.BooleanField(label="是否开源",required=False,widget=forms.CheckboxInput(attrs={'id':'open_source'}))
+    open_source = forms.BooleanField(label="是否使用开放模型",required=False,widget=forms.CheckboxInput(attrs={'id':'open_source'}))
     use_fed_model = forms.BooleanField(label="是否使用联邦学习",required=False,widget=forms.CheckboxInput(attrs={'id':'use_fed_model'}))

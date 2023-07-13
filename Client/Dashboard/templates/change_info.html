@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </li>
-
+            {% if user.is_administrator %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </li>
-
+            {% endif %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -362,11 +362,11 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex   mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">拥有资源概览</h1>&emsp;
+                    <div class="d-sm-flex   mb-8">
+                        <h1 class="h3 mb-0 text-gray-800">修改账号信息</h1>&emsp;
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-12">
                             <div class="form d-flex align-items-center">
                                 <div class="content">
                                     <form method="post" action="/dashboard/change_info" class="form-validate" id="loginFrom">
@@ -393,6 +393,10 @@
                                         <div class="form-group">
                                             {{ change_info_form.real_name.label_tag}}
                                             {{ change_info_form.real_name }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ change_info.avatar.label_tag }}
+                                            {{ change_info.avatar }}
                                         </div>
                                         <button id="login" type="submit" class="btn btn-primary">修改</button>
                                     </form>

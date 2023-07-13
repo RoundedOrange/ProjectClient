@@ -66,7 +66,7 @@
             </div>
         </div>
     </li>
-
+    {% if user.is_administrator %}
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -89,7 +89,7 @@
             </div>
         </div>
     </li>
-
+    {% endif %}
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -396,8 +396,8 @@
                                                     <th>状态</th>
                                                     <th>安全性</th>
                                                     <th>速度</th>
-                                                    <th>是否开放</th>
-                                                    <th>是否使用联邦学习</th>
+                                                    <th>是否使用开放模型</th>
+                                                    <th>是否使用他人联邦学习模型</th>
                                                     <th>操作</th>
                                                 </tr>
                                             </thead>
@@ -414,7 +414,7 @@
                                                         <td>{{ task.end_time }}</td>
                                                         <td>{{ task.accuracy }}</td>
                                                         <td>{{ task.dataset_id }}</td>
-                                                        <td>{{ task.cluster_id }}</td>
+                                                        <td>{{ task.cluster }}</td>
                                                         <td>{{ task.publisher_id }}</td>
                                                         <td>{{ task.status }}</td>
                                                         <td>{{ task.safety }}</td>

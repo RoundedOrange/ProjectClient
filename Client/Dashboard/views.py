@@ -79,6 +79,7 @@ def change_info(request):
             if(new_real_name != ""):
                 user.real_name = new_real_name
                 user.save()
+            
             return render(request,'change_info.html',locals())
     message = "只需修改想修改的字段，其余留空。"
     change_info_form = forms.ChangeInfoForm()
@@ -209,12 +210,11 @@ def dataset_add(request):
         return redirect('/login')
     user = models.User.objects.get(user_id=request.session.get('user_id',None))
     target_id = request.GET.get('target_id')
-    if target_id == None or int(target_id) != 0:
+    if not target_id is None and int(target_id) != 0:
         if request.method == 'POST':
             dataset_add_form = forms.DatasetAddForm(request.POST)
-            message = "请检查填写的内容！"
             if dataset_add_form.is_valid():
-                dataset = models.Dataset()
+                dataset = models.Dataset.objects.get(dataset_id=int(target_id))
                 total_size = dataset_add_form.cleaned_data.get('total_size')
                 description = dataset_add_form.cleaned_data.get('description')
                 dataset_name = dataset_add_form.cleaned_data.get('dataset_name')
@@ -229,7 +229,6 @@ def dataset_add(request):
                 dataset.graph_size = graph_size
                 dataset.save()
                 message = "操作成功！"
-                return render(request,'dataset_add.html',locals())
         dataset = models.Dataset.objects.get(dataset_id=int(target_id))
         dataset_add_form = forms.DatasetAddForm({
                         "total_size": dataset.total_size,

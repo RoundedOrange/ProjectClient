@@ -18,7 +18,7 @@ class User(models.Model):
 
 class Dataset(models.Model):
     dataset_id = models.AutoField(primary_key=True)
-    total_size = models.IntegerField(null=True)
+    total_size = models.CharField(null=True,max_length=256)
     description = models.TextField(max_length=100,default="")
     dataset_name = models.CharField(max_length=256,null=True)
     data_num = models.IntegerField(null=True)
@@ -68,9 +68,10 @@ class Task(models.Model):
     publisher = models.ForeignKey('User',on_delete=models.CASCADE)
     dataset = models.ForeignKey('Dataset',on_delete=models.CASCADE)
     cluster = models.ForeignKey('Device',on_delete=models.CASCADE)
-    status = models.IntegerField()
-    safety = models.IntegerField()
-    open_source = models.BooleanField()
-    use_fed_model = models.BooleanField()
-    log_name = models.CharField(max_length=256)
-    parameter_file_name = models.CharField(max_length=256)
+    status = models.IntegerField(default=0)
+    safety = models.IntegerField(null=True)
+    open_source = models.BooleanField(default=False)
+    use_fed_model = models.BooleanField(null=True)
+    log_name = models.CharField(max_length=256,null=True)
+    parameter_file_name = models.CharField(max_length=256,null=True)
+

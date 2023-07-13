@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </li>
-
+            {% if user.is_administrator %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -88,6 +88,7 @@
                     </div>
                 </div>
             </li>
+            {% endif %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -367,7 +368,7 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-6 col-md-6 mb-6">
                             <div class="alert alert-primary">账号信息</div>
                             <table class="table">
                                 <tbody>

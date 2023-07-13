@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </li>
-
+            {% if user.is_administrator %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -88,6 +88,7 @@
                     </div>
                 </div>
             </li>
+            {% endif %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -401,7 +402,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">采用集群</th>
-                                        <td colspan="2">{{ task.cluster_id }}</td>
+                                        <td colspan="2">{{ task.cluster }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">发布者</th>
@@ -420,11 +421,11 @@
                                         <td colspan="2">{{ task.speed}}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">是否开放</th>
+                                        <th scope="row">是否使用开放模型</th>
                                         <td colspan="2">{{ task.open_source }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">是否使用联邦学习</th>
+                                        <th scope="row">是否使用他人联邦学习模型</th>
                                         <td colspan="2">{{ task.use_fed_model }}</td>
                                     </tr>
                                   </tbody>

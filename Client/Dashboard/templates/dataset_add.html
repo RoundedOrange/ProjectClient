@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </li>
-
+            {% if user.is_administrator %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </li>
-
+            {% endif %}
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -373,7 +373,7 @@
                             <div class="alert alert-primary">请填写数据集详情</div>
                             <div class="form d-flex align-items-center">
                                 <div class="content">
-                                    <form method="post" action="dataset_add" class="form-validate" id="loginFrom">
+                                    <form method="post" action="dataset_add?target_id={{target_id}}" class="form-validate" id="loginFrom">
                                     {% if message %}
                                         <div class="alert alert-warning">{{ message }}</div>
                                     {% endif %}
@@ -392,8 +392,8 @@
                                         {{ dataset_add_form.dataset_name }}
                                     </div>
                                     <div class="form-group">
-                                        {{ dataset_add_form.dataset_num.label_tag }}
-                                        {{ dataset_add_form.dataset_num }}
+                                        {{ dataset_add_form.data_num.label_tag }}
+                                        {{ dataset_add_form.data_num }}
                                     </div>
                                     <div class="form-group">
                                         {{ dataset_add_form.is_graph.label_tag }}
@@ -404,6 +404,7 @@
                                         {{ dataset_add_form.graph_size }}
                                     </div>
                                     <button id="dataset_add_button" type="submit" class="btn btn-primary">提交</button>
+
                                 </form>
                                 </div>
                             </div>
