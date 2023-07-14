@@ -118,26 +118,7 @@
                 </div>
             </li>
 
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                充值相关
-            </div>
-
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>充值</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>个人账单明细</span></a>
-            </li>
+ 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -360,8 +341,8 @@
                     {% endif %}
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">任务详情&emsp;<button type="button" class="btn btn-primary" onclick="window.open('{{task.log_name}}')">下载日志</button>&emsp;
-                        <button type="button" class="btn btn-primary" onclick="window.open('{{task.parameter_file_name}}')">下载模型文件</button></h1>
+                        <h1 class="h3 mb-0 text-gray-800">任务详情&emsp;<button type="button" class="btn btn-primary" onclick="window.open('http://rxb2qos8d.hb-bkt.clouddn.com/'+'{{task.log_name}}')">下载日志</button>&emsp;
+                        <button type="button" class="btn btn-primary" onclick="window.open('http://rxb2qos8d.hb-bkt.clouddn.com/'+'{{task.parameter_file_name}}')">下载模型文件</button></h1>
                         
                         <button type="button" class="btn btn-primary" onclick="window.location.href='task_show'">返回</button>
                     </div>
@@ -425,7 +406,7 @@
                             </table>
                         </div>
                         <div class="col-xl-6 col-md-6 mb-6">
-                            <div class="alert alert-primary">正确率图像</div>
+                            <div class="alert alert-primary">正确率Baseline</div>
                             <div id="graph_accuracy" style="width: 800px;height:550px;"></div>
                         </div>
                     </div>

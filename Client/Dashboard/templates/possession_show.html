@@ -122,23 +122,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        充值相关
-    </div>
-
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>充值</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>个人账单明细</span></a>
-    </li>
+  
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -417,7 +401,7 @@
                                                         <td>{{ device.device_id }}</td>
                                                         <td>{{ device.OS }}</td>
                                                         <td>{{ device.CPU}}</td>
-                                                        <td>{{ device.status}}</td>
+                                                        <td>{%if device.status == 0%}关机{% elif device.status == 1 %}空闲{% else%}占用{% endif %}</td>
                                                         <td>{{ device.RAM}}</td>
                                                         <td>{{ device.ROM}}</td>
                                                         <td>{{ device.IP}}</td>

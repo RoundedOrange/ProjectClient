@@ -121,23 +121,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        充值相关
-    </div>
-
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>充值</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>个人账单明细</span></a>
-    </li>
+  
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -381,7 +365,6 @@
                                                     <th>任务ID</th>
                                                     <th>开始时间</th>
                                                     <th>结束时间</th>
-                                                    <th>准确率</th>
                                                     <th>采用数据集描述</th>
                                                     <th>采用集群ID</th>
                                                     <th>发布者ID</th>
@@ -404,11 +387,11 @@
                                                         <td>{{ task.task_id }}</td>
                                                         <td>{{ task.start_time }}</td>
                                                         <td>{{ task.end_time }}</td>
-                                                        <td>{{ task.accuracy }}</td>
                                                         <td>{{ task.dataset.description }}</td>
                                                         <td>{{ task.cluster }}</td>
                                                         <td>{{ task.publisher_id }}</td>
-                                                        <td>{{ task.status }}</td>
+                                                        <td>{% if task.status == '0' %}等待执行{% elif task.status == '1' %}创建任务{% elif task.status == '2' %}读取数据{%  elif task.status == '3' %}训练模型{%else %}执行完毕{%endif%}</td>
+                                                        
                                                         <td>{{ task.safety }}</td>
                                                         <td>{{ task.speed }}</td>
                                                         <td>{{ task.open_source }}</td>
