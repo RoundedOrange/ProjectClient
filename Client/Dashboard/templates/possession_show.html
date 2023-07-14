@@ -399,7 +399,7 @@
                                                           </div>
                                                         </td>
                                                         <td>{{ device.device_id }}</td>
-                                                        <td>{{ device.OS }}</td>
+                                                        <td>{%if device.OS == '1' %}Windows{%elif device.OS == '2' %}Linux{% elif device.OS == '3' %}macOS{%elif device.OS == '4' %}iOS{%else %}Android{%endif%}</td>
                                                         <td>{{ device.CPU}}</td>
                                                         <td>{%if device.status == 0%}关机{% elif device.status == 1 %}空闲{% else%}占用{% endif %}</td>
                                                         <td>{{ device.RAM}}</td>
