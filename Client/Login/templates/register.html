@@ -95,56 +95,62 @@
     <script src="../static/js/jquery.js"></script>
     <script src="../static/js/bootstrap.js"></script>
     <script>
-    function sendCaptcha() {
-        var telephone = document.getElementById('id_telephone').value;
-        var captcha = document.getElementById('id_captcha').value;
-        var button = document.getElementById('scaptcha');
 
-        if (!telephone) {
-            alert('请输入手机号码！');
-            return;
-        }
-        // 发送请求到后端发送验证码的接口
-        $.ajax({
-            type: 'POST',
-            url: 'send-captcha',
-            data: {
-                'telephone': telephone,
-              'captcha': captcha,  // 将验证码作为参数发送到后端
-            'csrfmiddlewaretoken': '{% csrf_token %}'  // 替换为你的模板引擎的方式获取 CSRF token
-            },
-          beforeSend: function () {
-      // 发送请求前禁用按钮
-      button.disabled = true;
-    },
-            success: function (response) {
-                if (response.status === 'success') {
-                    alert('验证码已发送，请注意查收！');
-                    ar count = 60;
-        var timer = setInterval(function () {
-          count--;
-          button.value = count + '秒后可重新发送';
-
-          if (count <= 0) {
-            // 倒计时结束，恢复按钮状态
-            button.value = '发送验证码';
-            button.disabled = false;
-            clearInterval(timer);
+      function sendCaptcha() {
+          var telephone = document.getElementById('id_telephone').value;
+          var captcha = document.getElementById('id_captcha').value;
+          var button = document.getElementById('scaptcha');
+          if (!telephone) {
+              alert('请输入手机号码！');
+              return;
           }
-        }, 1000);
-                } else {
-                    alert('发送验证码失败：' + response.message);
-                    // 发送失败，恢复按钮状态
-        button.disabled = false;
-                }
-            },
-            error: function () {
-                alert('发送验证码失败：请求错误！');
-                button.disabled = false;
+          // 发送请求到后端发送验证码的接口
+          $.ajax({
+              type: 'POST',
+              url: 'send-captcha',
+              data: {
+                  'telephone': telephone,
+                'captcha': captcha,  // 将验证码作为参数发送到后端
+              'csrfmiddlewaretoken': '{% csrf_token %}'  // 替换为你的模板引擎的方式获取 CSRF token
+              },
+            beforeSend: function () {
+        // 发送请求前禁用按钮
+        button.disabled = true;
+      },
+              success: function (response) {
+                  if (response.status === 'success') {
+                      alert('验证码已发送，请注意查收！');
+                      var count = 60;
+          var timer = setInterval(function () {
+            count--;
+            button.value = count + '秒后可重新发送';
+  
+            if (count <= 0) {
+              // 倒计时结束，恢复按钮状态
+              button.value = '发送验证码';
+              button.disabled = false;
+              clearInterval(timer);
             }
+          }, 1000);
+                  } else {
+                      alert('发送验证码失败：' + response.message);
+                      // 发送失败，恢复按钮状态
+          button.disabled = false;
+                  }
+              },
+              error: function () {
+                  alert('发送验证码失败：请求错误！');
+                  button.disabled = false;
+              }
+          });
+      }
+        $('.captcha').click(function () {
+          $.getJSON("/captcha/refresh/", function (result) {
+            $('.captcha').attr('src', result['image_url']);
+            $('#id_captcha_0').val(result['key'])
+          });
         });
-    }
-</script>
+      </script>
 
 
 
